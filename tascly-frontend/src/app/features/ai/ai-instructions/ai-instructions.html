@@ -1,0 +1,70 @@
+<div class="ai-instructions">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">AI Instructions</h1>
+            <p class="page-subtitle">Configure AI-powered automation and task suggestions</p>
+        </div>
+        <button class="btn-primary">+ New Instruction</button>
+    </div>
+
+    <div class="content-grid">
+        <!-- AI Suggestions Panel -->
+        <div class="suggestions-panel">
+            <h2 class="section-title">AI Suggestions</h2>
+            <div class="suggestions-list">
+                @for (suggestion of aiSuggestions; track $index) {
+                <div class="suggestion-card">
+                    <div class="suggestion-icon">💡</div>
+                    <div class="suggestion-text">{{ suggestion }}</div>
+                    <button class="btn-link">Apply</button>
+                </div>
+                }
+            </div>
+        </div>
+
+        <!-- Saved Instructions -->
+        <div class="instructions-panel">
+            <h2 class="section-title">Saved Instructions</h2>
+            <div class="instructions-list">
+                @for (instruction of savedInstructions; track instruction.id) {
+                <div class="instruction-card">
+                    <div class="instruction-header">
+                        <div class="instruction-info">
+                            <div class="instruction-name">{{ instruction.name }}</div>
+                            <div class="instruction-description">{{ instruction.description }}</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" [checked]="instruction.enabled">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    @if (instruction.lastRun) {
+                    <div class="instruction-meta">
+                        Last run: {{ instruction.lastRun | date:'short' }}
+                    </div>
+                    }
+                    <div class="instruction-actions">
+                        <button class="btn-link">Edit</button>
+                        <button class="btn-link">Run Now</button>
+                        <button class="btn-link text-danger">Delete</button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Instruction Editor -->
+    <div class="editor-panel">
+        <h2 class="section-title">Create New Instruction</h2>
+        <div class="editor-container">
+            <textarea class="instruction-editor"
+                placeholder="Describe what you want the AI to do... For example: 'Automatically assign high-priority bugs to available developers with QA experience'"
+                rows="6"></textarea>
+            <div class="editor-actions">
+                <button class="btn-secondary">Clear</button>
+                <button class="btn-primary">Save Instruction</button>
+            </div>
+        </div>
+    </div>
+</div>

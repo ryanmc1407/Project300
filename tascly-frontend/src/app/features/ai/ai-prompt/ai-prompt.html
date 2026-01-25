@@ -1,0 +1,103 @@
+<!-- I created this template for the AI task generation interface -->
+<!-- This is where managers can type or speak their task requests -->
+
+<div class="ai-prompt-container">
+    <!-- I'm creating a header section to explain what this feature does -->
+    <div class="prompt-header">
+        <h1 class="page-title">✨ AI Task Generator</h1>
+        <p class="page-subtitle">Describe what you need, and I'll break it down into actionable tasks</p>
+    </div>
+
+    <!-- I'm showing any error messages that occur -->
+    @if (errorMessage()) {
+    <div class="error-banner">
+        <span class="error-icon">⚠️</span>
+        <span class="error-text">{{ errorMessage() }}</span>
+        <button class="error-close" (click)="errorMessage.set(null)">✕</button>
+    </div>
+    }
+
+    <!-- I'm creating the main input area for the prompt -->
+    <div class="prompt-input-section">
+        <div class="input-wrapper">
+            <!-- I'm using a textarea instead of an input for multi-line prompts -->
+            <!-- I'm binding the value to my signal and updating it on input -->
+            <textarea class="prompt-textarea" [value]="promptSignal()"
+                (input)="promptSignal.set($any($event.target).value)"
+                placeholder="Example: Build a user authentication system with email verification, password reset, and social login for Google and Facebook..."
+                rows="6" [disabled]="isProcessing()">
+            </textarea>
+
+            <!-- I'm showing a character counter to help users track their input length -->
+            <div class="textarea-footer">
+                <span class="char-count">{{ getCharacterCount() }} characters</span>
+
+                <!-- I'm adding a clear button to quickly reset the input -->
+                @if (promptSignal()) {
+                <button class="btn-clear" (click)="clearPrompt()">Clear</button>
+                }
+            </div>
+        </div>
+
+        <!-- I'm creating the action buttons for generating tasks and voice input -->
+        <div class="input-actions">
+            <!-- I'm only showing the voice button if it's supported in the browser -->
+            @if (voiceService.isSupported()) {
+            <button class="voice-btn" (click)="startVoiceInput()" [disabled]="isProcessing() || isListeningSignal()"
+                [class.listening]="isListeningSignal()">
+                <!-- I'm showing different icons based on whether we're listening -->
+                @if (isListeningSignal()) {
+                <span class="pulse-icon">🎤</span>
+                <span>Listening...</span>
+                } @else {
+                <span>🎤</span>
+                <span>Voice Input</span>
+                }
+            </button>
+            }
+
+            <!-- I'm creating the main generate button -->
+            <button class="generate-btn" (click)="generateTasks()" [disabled]="isGenerateDisabled()">
+                <!-- I'm showing different content based on processing state -->
+                @if (isProcessing()) {
+                <span class="spinner"></span>
+                <span>AI is thinking...</span>
+                } @else {
+                <span>✨ Generate Tasks</span>
+                }
+            </button>
+        </div>
+    </div>
+
+    <!-- I'm showing example prompts to help users get started -->
+    <div class="examples-section">
+        <h3 class="examples-title">💡 Need inspiration? Try these examples:</h3>
+        <div class="examples-grid">
+            <!-- I'm looping through my example prompts -->
+            @for (example of examplePrompts; track example) {
+            <button class="example-card" (click)="useExamplePrompt(example)" [disabled]="isProcessing()">
+                <span class="example-icon">💭</span>
+                <span class="example-text">{{ example }}</span>
+            </button>
+            }
+        </div>
+    </div>
+
+    <!-- I'm showing a helpful tip section -->
+    <div class="tips-section">
+        <h4 class="tips-title">📝 Tips for better results:</h4>
+        <ul class="tips-list">
+            <li>Be specific about what you want to build</li>
+            <li>Mention any technical requirements or constraints</li>
+            <li>Include deadlines or priority information if relevant</li>
+            <li>Describe the end goal and who will use it</li>
+        </ul>
+    </div>
+
+    <!-- I'm adding a placeholder for the draft tasks list -->
+    <!-- This will be shown by a child component that I'll create next -->
+    <div class="draft-tasks-placeholder">
+        <!-- The TaskDraftListComponent will be inserted here -->
+        <!-- I'll add it once I create that component -->
+    </div>
+</div>

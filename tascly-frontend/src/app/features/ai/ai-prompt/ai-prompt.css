@@ -1,0 +1,342 @@
+/* I created this stylesheet for the AI task generation interface */
+/* I'm using a modern, clean design that matches the rest of the app */
+
+.ai-prompt-container {
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* I'm styling the header section */
+.prompt-header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px 0;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    color: #6B7280;
+    margin: 0;
+}
+
+/* I'm styling error messages to be prominent but not alarming */
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: #FEF2F2;
+    border: 1px solid #FEE2E2;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.error-icon {
+    font-size: 20px;
+}
+
+.error-text {
+    flex: 1;
+    color: #991B1B;
+    font-size: 14px;
+}
+
+.error-close {
+    background: none;
+    border: none;
+    color: #991B1B;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+}
+
+.error-close:hover {
+    background-color: #FEE2E2;
+    border-radius: 4px;
+}
+
+/* I'm styling the main input section */
+.prompt-input-section {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-wrapper {
+    margin-bottom: 16px;
+}
+
+/* I'm making the textarea large and comfortable to use */
+.prompt-textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 150px;
+    transition: border-color 0.2s;
+}
+
+/* I'm adding a focus state to show when the textarea is active */
+.prompt-textarea:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* I'm styling the textarea when it's disabled during processing */
+.prompt-textarea:disabled {
+    background-color: #F9FAFB;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* I'm styling the footer below the textarea */
+.textarea-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.char-count {
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.btn-clear {
+    padding: 6px 12px;
+    background: none;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #6B7280;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    background-color: #F9FAFB;
+    color: #111827;
+}
+
+/* I'm styling the action buttons */
+.input-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+/* I'm styling the voice input button */
+.voice-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: white;
+    border: 2px solid #8B5CF6;
+    border-radius: 8px;
+    color: #8B5CF6;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.voice-btn:hover:not(:disabled) {
+    background-color: #F5F3FF;
+}
+
+/* I'm adding a special style when voice input is active */
+.voice-btn.listening {
+    background-color: #8B5CF6;
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+
+/* I'm creating a pulse animation for the listening state */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.pulse-icon {
+    animation: pulse 1s infinite;
+}
+
+/* I'm styling the main generate button */
+.generate-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+}
+
+.generate-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* I'm creating a spinner animation for the loading state */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* I'm styling the examples section */
+.examples-section {
+    margin-bottom: 32px;
+}
+
+.examples-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+/* I'm creating a grid layout for the example cards */
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+/* I'm styling each example card */
+.example-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.example-card:hover:not(:disabled) {
+    border-color: #8B5CF6;
+    background-color: #F5F3FF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.example-card:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.example-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.example-text {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+}
+
+/* I'm styling the tips section */
+.tips-section {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 32px;
+}
+
+.tips-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #166534;
+    margin: 0 0 12px 0;
+}
+
+.tips-list {
+    margin: 0;
+    padding-left: 24px;
+    color: #166534;
+}
+
+.tips-list li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.tips-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* I'm adding responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .ai-prompt-container {
+        padding: 16px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .input-actions {
+        flex-direction: column;
+    }
+
+    .voice-btn,
+    .generate-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .examples-grid {
+        grid-template-columns: 1fr;
+    }
+}

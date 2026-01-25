@@ -1,0 +1,83 @@
+<div class="tasks-page">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Tasks</h1>
+            <p class="page-subtitle">Manage all your tasks in one place</p>
+        </div>
+        <button class="btn-primary">+ New Task</button>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-bar">
+        <div class="search-box">
+            <input type="text" placeholder="Search tasks..." [value]="searchQuery()"
+                (input)="searchQuery.set($any($event.target).value); filterTasks()">
+        </div>
+        <select [value]="selectedStatus()" (change)="selectedStatus.set($any($event.target).value); filterTasks()"
+            class="filter-select">
+            <option value="all">All Status</option>
+            <option value="Backlog">Backlog</option>
+            <option value="Todo">To Do</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Done">Done</option>
+        </select>
+        <select [value]="selectedPriority()" (change)="selectedPriority.set($any($event.target).value); filterTasks()"
+            class="filter-select">
+            <option value="all">All Priorities</option>
+            <option value="3">High</option>
+            <option value="2">Medium</option>
+            <option value="1">Low</option>
+        </select>
+        <div class="view-toggle">
+            <button [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')">List</button>
+            <button [class.active]="viewMode() === 'kanban'" (click)="viewMode.set('kanban')">Kanban</button>
+        </div>
+    </div>
+
+    <!-- Tasks List -->
+    <div class="tasks-container">
+        @if (filteredTasks().length === 0) {
+        <div class="empty-state">
+            <p>No tasks found</p>
+        </div>
+        }
+        @for (task of filteredTasks(); track task.id) {
+        <div class="task-card" [class.overdue]="isOverdue(task)">
+            <div class="task-main">
+                <div class="task-checkbox">
+                    <input type="checkbox" [checked]="task.status === 'Done'">
+                </div>
+                <div class="task-content">
+                    <div class="task-header">
+                        <h3 class="task-title">{{ task.title }}</h3>
+                        <div class="task-badges">
+                            <span class="priority-badge" [class]="getPriorityClass(task.priority)">
+                                {{ task.priority === 3 ? 'High' : task.priority === 2 ? 'Medium' : 'Low' }}
+                            </span>
+                            <span class="status-badge" [class]="getStatusClass(task.status)">{{ task.status }}</span>
+                            <span class="type-badge">{{ task.type }}</span>
+                        </div>
+                    </div>
+                    @if (task.description) {
+                    <p class="task-description">{{ task.description }}</p>
+                    }
+                    <div class="task-meta">
+                        @if (task.dueDate) {
+                        <span class="meta-item" [class.overdue-text]="isOverdue(task)">
+                            📅 Due: {{ task.dueDate | date:'MMM d, y' }}
+                        </span>
+                        }
+                        @if (task.estimatedHours) {
+                        <span class="meta-item">⏱️ {{ task.estimatedHours }}h estimated</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="task-actions">
+                <button class="btn-icon">✏️</button>
+                <button class="btn-icon">🗑️</button>
+            </div>
+        </div>
+        }
+    </div>
+</div>

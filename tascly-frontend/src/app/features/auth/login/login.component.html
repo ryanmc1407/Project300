@@ -1,0 +1,73 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Header -->
+    <div class="login-header">
+      <h1>Welcome to Tascly</h1>
+      <p>Sign in to manage your projects</p>
+    </div>
+
+    <!-- Error Message -->
+    @if (errorMessage()) {
+      <div class="error-alert">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.error]="hasError('email', 'required') || hasError('email', 'email')"
+        />
+        @if (hasError('email', 'required')) {
+          <span class="error-message">Email is required</span>
+        }
+        @if (hasError('email', 'email')) {
+          <span class="error-message">Please enter a valid email</span>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          [class.error]="hasError('password', 'required') || hasError('password', 'minlength')"
+        />
+        @if (hasError('password', 'required')) {
+          <span class="error-message">Password is required</span>
+        }
+        @if (hasError('password', 'minlength')) {
+          <span class="error-message">Password must be at least 6 characters</span>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="isLoading()"
+      >
+        @if (isLoading()) {
+          <span>Logging in...</span>
+        } @else {
+          <span>Sign In</span>
+        }
+      </button>
+    </form>
+
+    <!-- Register Link -->
+    <div class="register-link">
+      <p>Don't have an account? <a routerLink="/auth/register">Sign up</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<div class="settings-page">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Settings</h1>
+            <p class="page-subtitle">Manage your preferences and account</p>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab" [class.active]="activeTab === 'general'" (click)="activeTab = 'general'">
+            General
+        </button>
+        <button class="tab" [class.active]="activeTab === 'notifications'" (click)="activeTab = 'notifications'">
+            Notifications
+        </button>
+        <button class="tab" [class.active]="activeTab === 'account'" (click)="activeTab = 'account'">
+            Account
+        </button>
+    </div>
+
+    <!-- General Settings -->
+    @if (activeTab === 'general') {
+    <div class="settings-section">
+        <h2 class="section-title">General Settings</h2>
+
+        <div class="setting-group">
+            <div class="setting-label">Theme</div>
+            <div class="setting-description">Choose your preferred color theme</div>
+            <div class="theme-options">
+                <button class="theme-btn" [class.active]="settings().theme === 'light'" (click)="updateTheme('light')">
+                    ☀️ Light
+                </button>
+                <button class="theme-btn" [class.active]="settings().theme === 'dark'" (click)="updateTheme('dark')">
+                    🌙 Dark
+                </button>
+                <button class="theme-btn" [class.active]="settings().theme === 'auto'" (click)="updateTheme('auto')">
+                    🔄 Auto
+                </button>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">Default View</div>
+            <div class="setting-description">Choose which view to show when you log in</div>
+            <select class="setting-select" [value]="settings().preferences.defaultView"
+                (change)="updatePreference('defaultView', $any($event.target).value)">
+                <option value="business">Business Mode</option>
+                <option value="project">Project Mode</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">Start of Week</div>
+            <div class="setting-description">Choose which day starts your week</div>
+            <select class="setting-select" [value]="settings().preferences.startOfWeek"
+                (change)="updatePreference('startOfWeek', $any($event.target).value)">
+                <option value="sunday">Sunday</option>
+                <option value="monday">Monday</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">Time Format</div>
+            <select class="setting-select" [value]="settings().preferences.timeFormat"
+                (change)="updatePreference('timeFormat', $any($event.target).value)">
+                <option value="12h">12-hour (3:00 PM)</option>
+                <option value="24h">24-hour (15:00)</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">Date Format</div>
+            <select class="setting-select" [value]="settings().preferences.dateFormat"
+                (change)="updatePreference('dateFormat', $any($event.target).value)">
+                <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+            </select>
+        </div>
+    </div>
+    }
+
+    <!-- Notification Settings -->
+    @if (activeTab === 'notifications') {
+    <div class="settings-section">
+        <h2 class="section-title">Notification Settings</h2>
+
+        <div class="setting-group">
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Email Notifications</div>
+                    <div class="setting-description">Receive notifications via email</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" [checked]="settings().notifications.email"
+                        (change)="updateNotification('email', $any($event.target).checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Push Notifications</div>
+                    <div class="setting-description">Receive browser push notifications</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" [checked]="settings().notifications.push"
+                        (change)="updateNotification('push', $any($event.target).checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Task Reminders</div>
+                    <div class="setting-description">Get reminded about upcoming tasks</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" [checked]="settings().notifications.taskReminders"
+                        (change)="updateNotification('taskReminders', $any($event.target).checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">Team Updates</div>
+                    <div class="setting-description">Notifications about team activity</div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" [checked]="settings().notifications.teamUpdates"
+                        (change)="updateNotification('teamUpdates', $any($event.target).checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    }
+
+    <!-- Account Settings -->
+    @if (activeTab === 'account') {
+    <div class="settings-section">
+        <h2 class="section-title">Account Settings</h2>
+
+        <div class="setting-group">
+            <div class="setting-label">Name</div>
+            <input type="text" class="setting-input" [value]="settings().account.name" placeholder="Your name">
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">Email</div>
+            <input type="email" class="setting-input" [value]="settings().account.email" placeholder="your@email.com">
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">Password</div>
+            <button class="btn-secondary">Change Password</button>
+        </div>
+
+        <div class="danger-zone">
+            <h3 class="danger-title">Danger Zone</h3>
+            <div class="setting-group">
+                <div class="setting-label">Reset Settings</div>
+                <div class="setting-description">Reset all settings to default values</div>
+                <button class="btn-danger" (click)="resetSettings()">Reset to Defaults</button>
+            </div>
+        </div>
+    </div>
+    }
+</div>

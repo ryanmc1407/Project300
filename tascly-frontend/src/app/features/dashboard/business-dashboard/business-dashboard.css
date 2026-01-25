@@ -1,0 +1,262 @@
+.dashboard {
+    padding: 32px;
+    max-width: 1400px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.dashboard-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px 0;
+}
+
+.dashboard-subtitle {
+    font-size: 14px;
+    color: #6B7280;
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.date-label {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+}
+
+.mode-badge {
+    background-color: #A78BFA;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.kpi-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.card-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.card-sublabel {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.card-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #6B7280;
+    margin-bottom: 16px;
+}
+
+.card-action-button {
+    background-color: #8B5CF6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.card-action-button:hover {
+    background-color: #7C3AED;
+}
+
+.overdue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.overdue-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.priority-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.priority-badge.high {
+    background-color: #EF4444;
+    color: white;
+}
+
+.priority-badge.medium {
+    background-color: #F59E0B;
+    color: white;
+}
+
+.priority-badge.low {
+    background-color: #3B82F6;
+    color: white;
+}
+
+.overdue-details {
+    flex: 1;
+}
+
+.overdue-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.overdue-time {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+.priority-items {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.priority-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.priority-item:last-child {
+    border-bottom: none;
+}
+
+.priority-content {
+    flex: 1;
+}
+
+.priority-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.priority-meta {
+    font-size: 12px;
+    color: #6B7280;
+    display: flex;
+    gap: 16px;
+}
+
+.activity-feed {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #A78BFA;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-text {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 2px;
+}
+
+.activity-text strong {
+    font-weight: 600;
+    color: #111827;
+}
+
+.activity-time {
+    font-size: 12px;
+    color: #9CA3AF;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .kpi-cards {
+        grid-template-columns: 1fr;
+    }
+}

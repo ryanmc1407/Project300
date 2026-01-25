@@ -1,0 +1,89 @@
+<div class="daily-planner">
+    <!-- Header -->
+    <div class="planner-header">
+        <div>
+            <h1 class="planner-title">Daily Planner</h1>
+            <p class="planner-subtitle">{{ getFormattedDate() }}</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-secondary">← Previous Day</button>
+            <button class="btn-primary">Today</button>
+            <button class="btn-secondary">Next Day →</button>
+        </div>
+    </div>
+
+    <div class="planner-content">
+        <!-- Time Slots Column -->
+        <div class="time-slots">
+            <div class="slots-header">
+                <h2>Schedule</h2>
+                <span class="time-range">8:00 AM - 8:00 PM</span>
+            </div>
+
+            @for (slot of timeSlots; track slot.hour) {
+            <div class="time-slot">
+                <div class="slot-time">{{ slot.label }}</div>
+                <div class="slot-content">
+                    @if (slot.tasks.length === 0) {
+                    <div class="empty-slot">No tasks scheduled</div>
+                    }
+                    @for (task of slot.tasks; track task.id) {
+                    <div class="scheduled-task" [class]="getPriorityClass(task.priority)">
+                        <div class="task-header">
+                            <span class="task-title">{{ task.title }}</span>
+                            <span class="priority-badge" [class]="getPriorityClass(task.priority)">
+                                {{ task.priority === 3 ? 'High' : task.priority === 2 ? 'Medium' : 'Low' }}
+                            </span>
+                        </div>
+                        @if (task.description) {
+                        <p class="task-description">{{ task.description }}</p>
+                        }
+                        <div class="task-meta">
+                            <span class="status-badge" [class]="getStatusClass(task.status)">{{ task.status }}</span>
+                            @if (task.scheduledEnd) {
+                            <span class="task-duration">
+                                {{ task.scheduledStart | date:'h:mm a' }} - {{ task.scheduledEnd | date:'h:mm a' }}
+                            </span>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- Unscheduled Tasks Sidebar -->
+        <div class="unscheduled-sidebar">
+            <div class="sidebar-header">
+                <h2>Unscheduled Tasks</h2>
+                <button class="btn-primary btn-sm">+ New Task</button>
+            </div>
+
+            <div class="unscheduled-list">
+                @if (unscheduledTasks.length === 0) {
+                <div class="empty-state">
+                    <p>All tasks are scheduled! 🎉</p>
+                </div>
+                }
+                @for (task of unscheduledTasks; track task.id) {
+                <div class="unscheduled-task" [class]="getPriorityClass(task.priority)">
+                    <div class="task-header">
+                        <span class="task-title">{{ task.title }}</span>
+                        <span class="priority-badge" [class]="getPriorityClass(task.priority)">
+                            {{ task.priority === 3 ? 'High' : task.priority === 2 ? 'Medium' : 'Low' }}
+                        </span>
+                    </div>
+                    @if (task.description) {
+                    <p class="task-description">{{ task.description }}</p>
+                    }
+                    <div class="task-actions">
+                        <button class="btn-link">Schedule</button>
+                        <button class="btn-link">Edit</button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

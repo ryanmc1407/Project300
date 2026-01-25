@@ -1,0 +1,104 @@
+<div class="dashboard">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <div>
+            <h1 class="dashboard-title">Business Dashboard</h1>
+            <p class="dashboard-subtitle">High-level overview of tasks and team activity</p>
+        </div>
+        <div class="header-actions">
+            <span class="date-label">Today</span>
+            <span class="mode-badge">Business Mode</span>
+        </div>
+    </div>
+
+    <!-- KPI Cards Row -->
+    <div class="kpi-cards">
+        <!-- Today's Tasks Card -->
+        <div class="kpi-card">
+            <div class="card-header">
+                <div>
+                    <div class="card-label">Today's Tasks</div>
+                    <div class="card-sublabel">Today</div>
+                </div>
+            </div>
+            <div class="card-value">{{ todaysTasks.total }} tasks</div>
+            <div class="card-description">Tasks due today</div>
+            <button class="card-action-button">View Tasks</button>
+        </div>
+
+        <!-- Overdue Items Card -->
+        <div class="kpi-card">
+            <div class="card-header">
+                <div>
+                    <div class="card-label">Overdue Items</div>
+                    <div class="card-sublabel">Attention</div>
+                </div>
+            </div>
+            <div class="card-value">{{ overdueItems.length }} overdue</div>
+            <div class="card-description">Items overdue this week</div>
+            <div class="overdue-list">
+                @for (item of overdueItems; track item.title) {
+                <div class="overdue-item">
+                    <span class="priority-badge" [class]="item.priority">{{ item.priority === 'high' ? 'High' : 'Medium'
+                        }}</span>
+                    <div class="overdue-details">
+                        <div class="overdue-title">{{ item.title }}</div>
+                        <div class="overdue-time">{{ item.daysOverdue }} day{{ item.daysOverdue !== 1 ? 's' : '' }}
+                            overdue</div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <!-- Team Activity Card -->
+        <div class="kpi-card">
+            <div class="card-header">
+                <div>
+                    <div class="card-label">Team Activity (Last 24h)</div>
+                    <div class="card-sublabel">Last 24h</div>
+                </div>
+            </div>
+            <div class="card-value">{{ teamActivity.total }} updates</div>
+            <div class="card-description">Updates from your team</div>
+        </div>
+    </div>
+
+    <!-- High-Priority Items Section -->
+    <div class="section">
+        <h2 class="section-title">High-Priority Items</h2>
+        <div class="priority-items">
+            @for (item of highPriorityItems; track item.title) {
+            <div class="priority-item">
+                <span class="priority-badge" [class]="item.priority">{{ item.priority === 'high' ? 'High' : 'Medium'
+                    }}</span>
+                <div class="priority-content">
+                    <div class="priority-title">{{ item.title }}</div>
+                    <div class="priority-meta">
+                        <span>Assignee: {{ item.assignee }}</span>
+                        <span>Due: {{ item.due }}</span>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <!-- Recent Activity Section -->
+    <div class="section">
+        <h2 class="section-title">Recent Activity</h2>
+        <div class="activity-feed">
+            @for (activity of teamActivity.updates; track activity.user + activity.time) {
+            <div class="activity-item">
+                <div class="activity-dot"></div>
+                <div class="activity-content">
+                    <div class="activity-text">
+                        <strong>{{ activity.user }}</strong> {{ activity.action }}
+                    </div>
+                    <div class="activity-time">{{ activity.time }}</div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

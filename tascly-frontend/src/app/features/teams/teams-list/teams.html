@@ -1,0 +1,73 @@
+<div class="teams-page">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Team Members</h1>
+            <p class="page-subtitle">Manage your team and their permissions</p>
+        </div>
+        <button class="btn-primary">+ Add Member</button>
+    </div>
+
+    <div class="team-grid">
+        @for (member of teamMembers; track member.id) {
+        <div class="member-card">
+            <div class="member-header">
+                <div class="member-avatar" [class]="getRoleColor(member.role)">
+                    {{ getInitials(member.name) }}
+                </div>
+                <div class="status-indicator" [class]="getStatusClass(member.status)"></div>
+            </div>
+
+            <div class="member-info">
+                <h3 class="member-name">{{ member.name }}</h3>
+                <p class="member-email">{{ member.email }}</p>
+                <span class="role-badge" [class]="getRoleColor(member.role)">{{ member.role }}</span>
+            </div>
+
+            @if (member.skills) {
+            <div class="member-skills">
+                <div class="skills-label">Skills:</div>
+                <div class="skills-tags">
+                    @for (skill of member.skills.split(','); track skill) {
+                    <span class="skill-tag">{{ skill.trim() }}</span>
+                    }
+                </div>
+            </div>
+            }
+
+            <div class="member-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Capacity</div>
+                    <div class="stat-value">{{ member.capacityHoursPerWeek }}h/week</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Joined</div>
+                    <div class="stat-value">{{ member.joinedAt | date:'MMM yyyy' }}</div>
+                </div>
+            </div>
+
+            <div class="member-permissions">
+                <div class="permissions-label">Permissions:</div>
+                <div class="permissions-grid">
+                    @if (member.canManageTeam) {
+                    <span class="permission-badge">Manage Team</span>
+                    }
+                    @if (member.canAssignTasks) {
+                    <span class="permission-badge">Assign Tasks</span>
+                    }
+                    @if (member.canEditTasks) {
+                    <span class="permission-badge">Edit Tasks</span>
+                    }
+                    @if (member.canManageSettings) {
+                    <span class="permission-badge">Settings</span>
+                    }
+                </div>
+            </div>
+
+            <div class="member-actions">
+                <button class="btn-secondary">Edit</button>
+                <button class="btn-link">View Tasks</button>
+            </div>
+        </div>
+        }
+    </div>
+</div>

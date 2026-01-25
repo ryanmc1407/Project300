@@ -1,0 +1,257 @@
+.ai-instructions {
+    padding: 32px;
+    max-width: 1400px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px 0;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #6B7280;
+    margin: 0;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #8B5CF6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #7C3AED;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #374151;
+    border: 1px solid #E5E7EB;
+}
+
+.btn-secondary:hover {
+    background-color: #F9FAFB;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+.suggestions-panel,
+.instructions-panel {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.suggestions-list,
+.instructions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.suggestion-card {
+    background: #F0F9FF;
+    border: 1px solid #BAE6FD;
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.suggestion-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.suggestion-text {
+    flex: 1;
+    font-size: 14px;
+    color: #0C4A6E;
+    line-height: 1.5;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #8B5CF6;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-link:hover {
+    color: #7C3AED;
+    text-decoration: underline;
+}
+
+.btn-link.text-danger {
+    color: #EF4444;
+}
+
+.btn-link.text-danger:hover {
+    color: #DC2626;
+}
+
+.instruction-card {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.instruction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.instruction-info {
+    flex: 1;
+}
+
+.instruction-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.instruction-description {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.4;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E5E7EB;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked+.toggle-slider {
+    background-color: #8B5CF6;
+}
+
+input:checked+.toggle-slider:before {
+    transform: translateX(20px);
+}
+
+.instruction-meta {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-bottom: 12px;
+}
+
+.instruction-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.editor-panel {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.editor-container {
+    margin-top: 16px;
+}
+
+.instruction-editor {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+    margin-bottom: 12px;
+}
+
+.instruction-editor:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
