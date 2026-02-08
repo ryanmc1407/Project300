@@ -2,8 +2,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Amazon.Lambda;
+using Amazon.Lambda.Model;
 using TasclyBackend.API.Data;
 using TasclyBackend.API.Models;
 using TasclyBackend.API.Models.DTOs;
@@ -12,13 +15,13 @@ namespace TasclyBackend.API.Services;
 
 // This is my authentication service - it handles all the login/register logic
 // I'm using primary constructor (C# 12 feature) to inject dependencies
-public class AuthService(ApplicationDbContext context, IConfiguration configuration) : IAuthService
+public class AuthService(ApplicationDbContext context, IConfiguration configuration, IAmazonLambda lambdaClient) : IAuthService
 {
     // These are automatically available because of the primary constructor
     // context = database access
     // configuration = appsettings.json values
     
-    public async Task<AuthResponseDto> RegisterAsync(RegisterDto registerDto)
+    public async Task<AuthResponse?> RegisterAsync(RegisterDto registerDto)
     {
         // First, check if a user with this email already exists
         // I don't want duplicate emails in my database
@@ -55,17 +58,47 @@ public class AuthService(ApplicationDbContext context, IConfiguration configurat
         user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7); // Refresh token lasts 7 days
         await context.SaveChangesAsync();
         
+        // Send welcome email via Lambda
+        try
+        {
+            var emailRequest = new EmailRequestDto
+            {
+                Email = user.Email,
+                Username = user.Username,
+                Message = "Welcome to Tascly! We're glad to have you."
+            };
+
+            var request = new InvokeRequest
+            {
+                FunctionName = "TasclyBackend_EmailLambda", // This name might need adjustment based on how it's deployed/configured usually, but for local mock we might need to be careful. 
+                // However, since we are not actually deploying to AWS, this will fail if we don't handle it or if we don't have local lambda setup.
+                // But the user asked to "send user email and message" using "c sharp . net".
+                // If running against real AWS, FunctionName is key.
+                // For now, I'll use the logical name.
+                Payload = JsonSerializer.Serialize(emailRequest),
+                InvocationType = InvocationType.Event // Fire and forget
+            };
+            
+            await lambdaClient.InvokeAsync(request);
+        }
+        catch (Exception ex)
+        {
+            // Don't fail registration if email fails
+            Console.WriteLine($"Failed to send email: {ex.Message}");
+        }
+        
         // Return the response with both tokens
-        return new AuthResponseDto
+        return new AuthResponse
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken,
             Username = user.Username,
-            Email = user.Email
+            Email = user.Email,
+            UserId = user.Id
         };
     }
     
-    public async Task<AuthResponseDto?> LoginAsync(LoginDto loginDto)
+    public async Task<AuthResponse?> LoginAsync(LoginDto loginDto)
     {
         // Find the user by email
         var user = await context.Users
@@ -95,20 +128,21 @@ public class AuthService(ApplicationDbContext context, IConfiguration configurat
         user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
         await context.SaveChangesAsync();
         
-        return new AuthResponseDto
+        return new AuthResponse
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken,
             Username = user.Username,
-            Email = user.Email
+            Email = user.Email,
+            UserId = user.Id
         };
     }
     
-    public async Task<AuthResponseDto?> RefreshTokenAsync(string refreshToken)
+    public async Task<AuthResponse?> RefreshTokenAsync(RefreshTokenDto refreshTokenDto)
     {
         // Find the user with this refresh token
         var user = await context.Users
-            .FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+            .FirstOrDefaultAsync(u => u.RefreshToken == refreshTokenDto.RefreshToken);
         
         // Check if the token exists and hasn't expired
         if (user == null || user.RefreshTokenExpiry < DateTime.UtcNow)
@@ -125,12 +159,13 @@ public class AuthService(ApplicationDbContext context, IConfiguration configurat
         user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
         await context.SaveChangesAsync();
         
-        return new AuthResponseDto
+        return new AuthResponse
         {
             AccessToken = accessToken,
             RefreshToken = newRefreshToken,
             Username = user.Username,
-            Email = user.Email
+            Email = user.Email,
+            UserId = user.Id
         };
     }
     

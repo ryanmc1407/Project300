@@ -20,12 +20,13 @@ public class LoginDto
 
 // This is what I send back to the frontend after successful login/register
 // It contains both tokens needed for authentication
-public class AuthResponseDto
+public class AuthResponse
 {
     public required string AccessToken { get; set; }
     public required string RefreshToken { get; set; }
     public required string Username { get; set; }
     public required string Email { get; set; }
+    public required int UserId { get; set; } // Add user ID to response
 }
 
 // This is what the frontend sends when it wants to refresh the access token
@@ -49,4 +50,5 @@ public class ProjectDto
     public string? Description { get; set; }
     public int OwnerId { get; set; }
     public DateTime CreatedAt { get; set; }
+    public string UserRole { get; set; } = "Viewer"; // Default role
 }

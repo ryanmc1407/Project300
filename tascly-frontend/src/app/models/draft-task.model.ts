@@ -24,6 +24,10 @@ export interface DraftTask {
 
     // I'm categorizing tasks so they can be filtered and organized properly
     type: 'Feature' | 'Bug' | 'Improvement';
+
+    // Temporal fields allowing the AI to specify when tasks should occur
+    scheduledStart?: string;
+    dueDate?: string;
 }
 
 // I created this interface to structure the request I send to the AI backend

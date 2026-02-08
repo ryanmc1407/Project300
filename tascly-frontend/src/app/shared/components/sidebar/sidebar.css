@@ -110,3 +110,28 @@
 .sidebar::-webkit-scrollbar-thumb:hover {
     background: #9CA3AF;
 }
+
+/* Logout Button Styles */
+.logout-btn {
+    width: 100%;
+    margin-top: auto;
+    /* Push to bottom */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    /* nav-item provides base styles, these override button defaults */
+}
+
+.logout-btn:hover {
+    background-color: #FEE2E2;
+    /* Light red background on hover */
+    color: #DC2626;
+    /* Red text on hover */
+}
+
+/* Icon specific color for logout on hover */
+.logout-btn:hover .icon {
+    stroke: #DC2626;
+}

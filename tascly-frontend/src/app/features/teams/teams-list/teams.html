@@ -4,8 +4,22 @@
             <h1 class="page-title">Team Members</h1>
             <p class="page-subtitle">Manage your team and their permissions</p>
         </div>
-        <button class="btn-primary">+ Add Member</button>
+        <button class="btn-primary" (click)="showAddForm = !showAddForm">
+            {{ showAddForm ? 'Cancel' : '+ Add Member' }}
+        </button>
     </div>
+
+    @if (showAddForm) {
+    <div class="add-member-form">
+        <input type="email" [(ngModel)]="newMemberEmail" placeholder="Enter email address" class="form-input">
+        <select [(ngModel)]="newMemberRole" class="form-select">
+            @for (role of roles; track role) {
+            <option [value]="role">{{ role }}</option>
+            }
+        </select>
+        <button class="btn-primary" (click)="addMember()">Add</button>
+    </div>
+    }
 
     <div class="team-grid">
         @for (member of teamMembers; track member.id) {

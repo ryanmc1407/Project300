@@ -9,16 +9,19 @@ import { VoiceInputService } from '../../../core/services/voice-input.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Subscription } from 'rxjs';
 
+import { TaskDraftListComponent } from '../task-draft-list/task-draft-list';
+
 @Component({
     selector: 'app-ai-prompt',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TaskDraftListComponent],
     templateUrl: './ai-prompt.html',
     styleUrl: './ai-prompt.css'
 })
 export class AIPromptComponent implements OnInit, OnDestroy {
-    // I'm injecting the services I need using Angular 19's inject() function
-    private aiService = inject(AiTaskGeneratorService);
+    // I'm injecting the AI service to handle task generation
+    // I'm making this public so the template can access it
+    aiService = inject(AiTaskGeneratorService);
     public voiceService = inject(VoiceInputService); // Must be public for template access
     private authService = inject(AuthService);
 
@@ -171,5 +174,15 @@ export class AIPromptComponent implements OnInit, OnDestroy {
     // This helps users know how much they've written
     getCharacterCount(): number {
         return this.promptSignal().length;
+    }
+
+    // Save all draft tasks to the backend
+    async saveDraftTasks() {
+        await this.aiService.saveDraftTasks();
+    }
+
+    // Clear all draft tasks
+    clearDrafts() {
+        this.aiService.clearDraftTasks();
     }
 }

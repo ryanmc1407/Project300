@@ -1,7 +1,8 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../../core/services/task.service';
 import { Task, TaskStatus, TaskPriority } from '../../../models/task.model';
+import { ModeService } from '../../../core/services/mode.service';
 
 // Tasks Component
 // Displays all tasks with filtering, sorting, and bulk actions
@@ -15,6 +16,8 @@ import { Task, TaskStatus, TaskPriority } from '../../../models/task.model';
 export class TasksComponent implements OnInit {
   private taskService = inject(TaskService);
 
+  private modeService = inject(ModeService);
+
   // All tasks
   allTasks: Task[] = [];
   filteredTasks = signal<Task[]>([]);
@@ -27,83 +30,52 @@ export class TasksComponent implements OnInit {
   // View mode
   viewMode = signal<'list' | 'kanban'>('list');
 
-  ngOnInit() {
-    this.loadTasks();
+  constructor() {
+    // Re-filter tasks when mode changes or tasks signal updates
+    effect(() => {
+      this.modeService.activeMode();
+      this.allTasks = this.taskService.tasks();
+      this.filterTasks();
+    });
   }
 
+  ngOnInit() {
+    // Handled by effect
+  }
+
+  // Load today's tasks
   loadTasks() {
-    // Mock data
-    this.allTasks = [
-      {
-        id: 1,
-        title: 'Design system updates',
-        description: 'Update component library with new design tokens',
-        priority: TaskPriority.High,
-        type: 'Feature' as any,
-        status: TaskStatus.InProgress,
-        dueDate: new Date('2026-01-26'),
-        estimatedHours: 8,
-        projectId: 1,
-        createdById: 1,
-        createdAt: new Date()
+    this.taskService.getAllTasks().subscribe({
+      next: (tasks) => {
+        this.allTasks = tasks;
+        this.filterTasks();
       },
-      {
-        id: 2,
-        title: 'Fix login bug',
-        description: 'Users unable to login with special characters in password',
-        priority: TaskPriority.High,
-        type: 'Bug' as any,
-        status: TaskStatus.Todo,
-        dueDate: new Date('2026-01-25'),
-        estimatedHours: 3,
-        projectId: 1,
-        createdById: 1,
-        createdAt: new Date()
-      },
-      {
-        id: 3,
-        title: 'API documentation',
-        description: 'Document all REST endpoints',
-        priority: TaskPriority.Medium,
-        type: 'Improvement' as any,
-        status: TaskStatus.Todo,
-        estimatedHours: 6,
-        projectId: 1,
-        createdById: 1,
-        createdAt: new Date()
-      },
-      {
-        id: 4,
-        title: 'Performance optimization',
-        description: 'Optimize database queries',
-        priority: TaskPriority.Low,
-        type: 'Improvement' as any,
-        status: TaskStatus.Backlog,
-        estimatedHours: 12,
-        projectId: 1,
-        createdById: 1,
-        createdAt: new Date()
-      },
-      {
-        id: 5,
-        title: 'User onboarding flow',
-        description: 'Create guided tour for new users',
-        priority: TaskPriority.Medium,
-        type: 'Feature' as any,
-        status: TaskStatus.Done,
-        estimatedHours: 10,
-        projectId: 1,
-        createdById: 1,
-        createdAt: new Date()
-      }
-    ];
-    this.filterTasks();
+      error: (err) => console.error('Failed to load tasks:', err)
+    });
   }
 
   filterTasks() {
+    const isBusinessMode = this.modeService.isBusinessMode();
+
     const filtered = this.allTasks.filter(task => {
+      // In Business Mode, hide technical tasks
+      if (isBusinessMode) {
+        if (task.type === 'Bug' as any ||
+          task.title.toLowerCase().includes('design system') ||
+          task.title.toLowerCase().includes('login bug') ||
+          task.title.toLowerCase().includes('api') ||
+          task.title.toLowerCase().includes('optimization') ||
+          task.description?.toLowerCase().includes('endpoint') ||
+          task.description?.toLowerCase().includes('database')) {
+          return false;
+        }
+      } else {
+        // In Project Mode, optionally hide pure admin tasks if desired?
+        // For now, let's keep it simple and just filter Business Mode hard.
+      }
+
       const statusMatch = this.selectedStatus() === 'all' || task.status === this.selectedStatus();
-      const priorityMatch = this.selectedPriority() === 'all' || task.priority.toString() === this.selectedPriority();
+      const priorityMatch = this.selectedPriority() === 'all' || task.priority === this.selectedPriority();
       const searchMatch = !this.searchQuery() ||
         task.title.toLowerCase().includes(this.searchQuery().toLowerCase()) ||
         task.description?.toLowerCase().includes(this.searchQuery().toLowerCase());
@@ -113,13 +85,12 @@ export class TasksComponent implements OnInit {
     this.filteredTasks.set(filtered);
   }
 
-  getPriorityClass(priority: TaskPriority): string {
-    switch (priority) {
-      case TaskPriority.High: return 'high';
-      case TaskPriority.Medium: return 'medium';
-      case TaskPriority.Low: return 'low';
-      default: return 'medium';
-    }
+  getPriorityClass(priority: any): string {
+    const p = String(priority).toLowerCase();
+    if (p === 'high' || p === '3') return 'high';
+    if (p === 'medium' || p === '2') return 'medium';
+    if (p === 'low' || p === '1') return 'low';
+    return 'medium';
   }
 
   getStatusClass(status: TaskStatus): string {

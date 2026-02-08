@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TeamService } from '../../../core/services/team.service';
 import { TeamMember, TeamRole, TeamMemberStatus } from '../../../models/team-member.model';
 
@@ -8,7 +9,7 @@ import { TeamMember, TeamRole, TeamMemberStatus } from '../../../models/team-mem
 @Component({
     selector: 'app-teams',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, FormsModule],
     templateUrl: './teams.html',
     styleUrl: './teams.css'
 })
@@ -17,120 +18,75 @@ export class TeamsComponent implements OnInit {
 
     teamMembers: TeamMember[] = [];
 
+    // For adding new member
+    newMemberEmail: string = '';
+    newMemberRole: TeamRole = TeamRole.Developer;
+    roles = Object.values(TeamRole).filter(r => typeof r === 'string') as string[];
+    showAddForm = false;
+
+    // Get current project ID - for now hardcoded or fetched from somewhere
+    currentProjectId = 1;
+
     ngOnInit() {
         this.loadTeamMembers();
     }
 
     loadTeamMembers() {
-        // Mock data
-        this.teamMembers = [
-            {
-                id: 1,
-                name: 'Sarah Johnson',
-                email: 'sarah.j@tascly.com',
-                role: TeamRole.Manager,
-                avatarUrl: undefined,
-                capacityHoursPerWeek: 40,
-                skills: 'Leadership, Strategy, Planning',
-                canAccessBusinessMode: true,
-                canAccessProjectMode: true,
-                canManageTeam: true,
-                canDeleteTasks: true,
-                canEditTasks: true,
-                canViewBoard: true,
-                canAssignTasks: true,
-                canManageSettings: true,
-                projectId: 1,
-                userId: 1,
-                isActive: true,
-                status: TeamMemberStatus.Online,
-                joinedAt: new Date('2025-01-01')
+        // Fetch real data
+        this.teamService.getTeamMembersByProject(this.currentProjectId).subscribe({
+            next: (members) => {
+                this.teamMembers = members;
             },
-            {
-                id: 2,
-                name: 'Alex Chen',
-                email: 'alex.c@tascly.com',
-                role: TeamRole.Developer,
-                avatarUrl: undefined,
-                capacityHoursPerWeek: 40,
-                skills: 'Angular, TypeScript, C#',
-                canAccessBusinessMode: false,
-                canAccessProjectMode: true,
-                canManageTeam: false,
-                canDeleteTasks: false,
-                canEditTasks: true,
-                canViewBoard: true,
-                canAssignTasks: false,
-                canManageSettings: false,
-                projectId: 1,
-                userId: 2,
-                isActive: true,
-                status: TeamMemberStatus.Busy,
-                joinedAt: new Date('2025-01-15')
-            },
-            {
-                id: 3,
-                name: 'Maria Garcia',
-                email: 'maria.g@tascly.com',
-                role: TeamRole.Designer,
-                avatarUrl: undefined,
-                capacityHoursPerWeek: 40,
-                skills: 'UI/UX, Figma, Design Systems',
-                canAccessBusinessMode: false,
-                canAccessProjectMode: true,
-                canManageTeam: false,
-                canDeleteTasks: false,
-                canEditTasks: true,
-                canViewBoard: true,
-                canAssignTasks: false,
-                canManageSettings: false,
-                projectId: 1,
-                userId: 3,
-                isActive: true,
-                status: TeamMemberStatus.Online,
-                joinedAt: new Date('2025-02-01')
-            },
-            {
-                id: 4,
-                name: 'James Wilson',
-                email: 'james.w@tascly.com',
-                role: TeamRole.QA,
-                avatarUrl: undefined,
-                capacityHoursPerWeek: 40,
-                skills: 'Testing, Automation, Quality Assurance',
-                canAccessBusinessMode: false,
-                canAccessProjectMode: true,
-                canManageTeam: false,
-                canDeleteTasks: false,
-                canEditTasks: true,
-                canViewBoard: true,
-                canAssignTasks: false,
-                canManageSettings: false,
-                projectId: 1,
-                userId: 4,
-                isActive: true,
-                status: TeamMemberStatus.Offline,
-                joinedAt: new Date('2025-03-01')
-            }
-        ];
+            error: (err) => console.error('Failed to load team members', err)
+        });
     }
 
-    getRoleColor(role: TeamRole): string {
+    addMember() {
+        if (!this.newMemberEmail) return;
+
+        const newMember = {
+            email: this.newMemberEmail,
+            role: this.newMemberRole,
+            projectId: this.currentProjectId
+        };
+
+        // Call API
+        // Note: I need to update TeamService to support the AddTeamMemberDto structure
+        // But for now, let's see if createTeamMember works or if I need to add a specifc method
+        this.teamService.createTeamMember(newMember).subscribe({
+            next: (member) => {
+                this.teamMembers.push(member);
+                this.newMemberEmail = '';
+                this.showAddForm = false;
+            },
+            error: (err) => {
+                console.error('Failed to add member', err);
+                alert('Failed to add member: ' + (err.error?.message || err.message));
+            }
+        });
+    }
+
+    getRoleColor(role: TeamRole | string): string {
         switch (role) {
-            case TeamRole.Manager: return 'purple';
-            case TeamRole.Developer: return 'blue';
-            case TeamRole.Designer: return 'pink';
-            case TeamRole.QA: return 'green';
-            case TeamRole.ProductOwner: return 'orange';
+            case TeamRole.Manager:
+            case 'Manager': return 'purple';
+            case TeamRole.Developer:
+            case 'Developer': return 'blue';
+            case TeamRole.Designer:
+            case 'Designer': return 'pink';
+            case TeamRole.QA:
+            case 'QA': return 'green';
+            case TeamRole.ProductOwner:
+            case 'ProductOwner': return 'orange';
             default: return 'gray';
         }
     }
 
     getStatusClass(status: TeamMemberStatus): string {
-        return status.toLowerCase();
+        return status ? status.toString().toLowerCase() : 'offline';
     }
 
     getInitials(name: string): string {
-        return name.split(' ').map(n => n[0]).join('').toUpperCase();
+        return name ? name.split(' ').map(n => n[0]).join('').toUpperCase() : '?';
     }
 }

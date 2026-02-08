@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { DraftTask, AiTaskRequest, BulkTaskCreateRequest, AiTaskResponse } from '../../models/draft-task.model';
 import { ModeService } from './mode.service';
+import { TaskService } from './task.service';
 
 @Injectable({
     providedIn: 'root' // I'm making this a singleton service available throughout my app
@@ -16,6 +17,8 @@ export class AiTaskGeneratorService {
     private http = inject(HttpClient);
     // I'm injecting the ModeService to get the current mode context
     private modeService = inject(ModeService);
+    // Inject TaskService to refresh tasks after saving
+    private taskService = inject(TaskService);
 
     // I'm storing my API base URL here so I can easily change it if needed
     // In production, I'd move this to an environment file
@@ -31,6 +34,9 @@ export class AiTaskGeneratorService {
     // errorSignal holds any error messages to display
     errorSignal = signal<string | null>(null);
 
+    // Store the current project ID for bulk task creation
+    private currentProjectId = signal<number>(1); // Default to project 1
+
     // I implemented this method to call the backend API
     // It handles the entire lifecycle of the request: loading state, error handling, etc.
     async generateTasks(prompt: string, projectId: number, userId: number): Promise<void> {
@@ -41,6 +47,7 @@ export class AiTaskGeneratorService {
         // I'm setting the processing state to true so the UI can show a spinner
         this.isProcessing.set(true);
         this.errorSignal.set(null); // Clear previous errors
+        this.currentProjectId.set(projectId); // Store for later use
 
         try {
             // I'm determining the current mode string to send to the backend
@@ -165,5 +172,53 @@ export class AiTaskGeneratorService {
     // This is a convenience method for the UI to show task counts
     getDraftTaskCount(): number {
         return this.draftTasks().length;
+    }
+
+    // Save all draft tasks to the backend
+    async saveDraftTasks(): Promise<boolean> {
+        const tasks = this.draftTasks();
+        if (tasks.length === 0) {
+            return false;
+        }
+
+        this.isProcessing.set(true);
+        this.errorSignal.set(null);
+
+        try {
+            // Call the bulk create endpoint
+            const requestBody = {
+                projectId: this.currentProjectId(),
+                tasks: tasks.map(task => ({
+                    tempId: Number(task.tempId),
+                    title: task.title,
+                    description: task.description,
+                    priority: task.priority,
+                    estimatedHours: Number(task.estimatedHours),
+                    type: task.type,
+                    suggestedAssignee: task.suggestedAssignee || null,
+                    scheduledStart: task.scheduledStart || null,
+                    dueDate: task.dueDate || null
+                }))
+            };
+
+            console.log('Sending bulk request:', JSON.stringify(requestBody, null, 2));
+
+            await firstValueFrom(
+                this.http.post(`${this.apiUrl}/tasks/bulk`, requestBody)
+            );
+
+            // Refresh the main task lists
+            this.taskService.refreshTasks();
+
+            // Clear draft tasks after successful save
+            this.clearDraftTasks();
+            return true;
+        } catch (error: any) {
+            console.error('Failed to save draft tasks:', error);
+            this.errorSignal.set('Failed to save tasks. Please try again.');
+            return false;
+        } finally {
+            this.isProcessing.set(false);
+        }
     }
 }

@@ -59,7 +59,7 @@ public class AuthController(IAuthService authService) : ControllerBase
     public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDto refreshTokenDto)
     {
         // Try to refresh the token
-        var response = await authService.RefreshTokenAsync(refreshTokenDto.RefreshToken);
+        var response = await authService.RefreshTokenAsync(refreshTokenDto);
         
         // If response is null, the refresh token was invalid or expired
         if (response == null)

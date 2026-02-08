@@ -24,38 +24,52 @@ public class TaskBulkRepository(ApplicationDbContext context) : ITaskBulkReposit
         
         try
         {
+            // I'm pre-loading team members to enable synchronous lookup
+            // Using Lookups instead of Dictionaries to handle potential duplicate names gracefully
+            var allMembers = await context.TeamMembers
+                .Where(tm => tm.ProjectId == projectId)
+                .ToListAsync();
+
+            var teamMembersByName = allMembers.ToLookup(m => m.Name.ToLower());
+            var teamMembersByEmailPrefix = allMembers.ToLookup(m => m.Email.Split('@')[0].ToLower());
+
             // I'm converting the draft tasks into actual Task entities
-            // I need to map the string values to enums and set the database fields
-            var tasks = draftTasks.Select(draft => new Task
+            var tasks = new List<TaskModel>();
+            
+            foreach (var draft in draftTasks)
             {
-                // I'm mapping the basic properties from the draft
-                Title = draft.Title,
-                Description = draft.Description,
-                
-                // I'm parsing the priority string into the enum
-                // I'm using Enum.Parse because I trust the frontend validation
-                Priority = Enum.Parse<TaskPriority>(draft.Priority),
-                
-                EstimatedHours = draft.EstimatedHours,
-                
-                // I'm parsing the type string into the enum
-                Type = Enum.Parse<TaskType>(draft.Type),
-                
-                // I'm setting all new tasks to Backlog status by default
-                // The user can move them to other columns later
-                Status = TaskStatus.Backlog,
-                
-                // I'm setting the project and creator information
-                ProjectId = projectId,
-                CreatedById = createdById,
-                CreatedAt = DateTime.UtcNow,
-                
-                // I'm leaving AssignedToId null for now
-                // In a future enhancement, I could look up the suggested assignee
-                // and set the AssignedToId based on the team member's name
-                AssignedToId = null
-                
-            }).ToList();
+                // I'm attempting to resolve the assignee ID
+                int? assignedToId = null;
+                if (!string.IsNullOrWhiteSpace(draft.SuggestedAssignee))
+                {
+                    var searchName = draft.SuggestedAssignee.ToLower();
+                    // Resolve taking the first match if multiple exist
+                    var match = teamMembersByName[searchName].FirstOrDefault() 
+                              ?? teamMembersByEmailPrefix[searchName].FirstOrDefault();
+                    
+                    if (match != null)
+                    {
+                        assignedToId = match.Id;
+                    }
+                }
+
+                tasks.Add(new TaskModel
+                {
+                    Title = draft.Title,
+                    Description = draft.Description,
+                    Priority = Enum.TryParse<TaskPriority>(draft.Priority, true, out var p) ? p : TaskPriority.Medium,
+                    EstimatedHours = draft.EstimatedHours,
+                    Type = Enum.TryParse<TaskType>(draft.Type, true, out var t) ? t : TaskType.Feature,
+                    Status = TaskStatus.Backlog,
+                    ProjectId = projectId,
+                    CreatedById = createdById,
+                    CreatedAt = DateTime.UtcNow,
+                    AssignedToId = assignedToId,
+                    ScheduledStart = draft.ScheduledStart,
+                    ScheduledEnd = draft.ScheduledStart?.AddHours((double)draft.EstimatedHours),
+                    DueDate = draft.DueDate
+                });
+            }
             
             // I'm using AddRangeAsync for better performance than adding one at a time
             // This generates a single INSERT statement with multiple rows
@@ -80,27 +94,26 @@ public class TaskBulkRepository(ApplicationDbContext context) : ITaskBulkReposit
             Console.Error.WriteLine($"Bulk task creation failed: {ex.Message}");
             
             // I'm re-throwing the exception so the controller can handle it
-            throw new Exception("Failed to create tasks in bulk", ex);
+            throw;
         }
     }
     
-    // I could add a helper method to resolve suggested assignees in the future
-    // This would look up team members by name and set the AssignedToId
+    // I implemented this helper method to look up team members by name
+    // This allows the AI to assign tasks using natural language names like "Mary"
     private async Task<int?> ResolveAssigneeId(string? suggestedAssignee, int projectId)
     {
-        if (string.IsNullOrEmpty(suggestedAssignee))
+        if (string.IsNullOrWhiteSpace(suggestedAssignee))
         {
             return null;
         }
         
-        // I would query the team members table to find a match
-        // For now, I'm just returning null since this is a future enhancement
-        // var teamMember = await context.TeamMembers
-        //     .FirstOrDefaultAsync(tm => 
-        //         tm.Name == suggestedAssignee && 
-        //         tm.ProjectId == projectId);
-        // return teamMember?.UserId;
-        
-        return null;
+        // I'm searching for a team member with a matching name (case-insensitive)
+        // I'm using ToLower() to ensure "Mary" matches "mary" or "MARY"
+        var teamMember = await context.TeamMembers
+            .FirstOrDefaultAsync(tm => 
+                tm.Name.ToLower() == suggestedAssignee.ToLower() && 
+                tm.ProjectId == projectId);
+                
+        return teamMember?.UserId;
     }
 }

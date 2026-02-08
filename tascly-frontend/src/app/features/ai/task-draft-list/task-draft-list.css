@@ -277,6 +277,22 @@
     font-weight: 500;
 }
 
+.date-chip {
+    background-color: #F3F4F6;
+    color: #4B5563;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #E5E7EB;
+}
+
+.date-chip.today {
+    background-color: #FEF3C7;
+    color: #92400E;
+    border-color: #FCD34D;
+}
+
 /* I'm styling the description section */
 .description-section {
     width: 100%;

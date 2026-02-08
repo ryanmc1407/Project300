@@ -1,7 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../../core/services/task.service';
-import { Task, TaskPriority } from '../../../models/task.model';
+import { Task, TaskPriority, TaskType } from '../../../models/task.model';
+import { ModeService } from '../../../core/services/mode.service';
 
 // Weekly Planner Component
 // Shows tasks across a 7-day week view with workload visualization
@@ -14,12 +15,15 @@ import { Task, TaskPriority } from '../../../models/task.model';
 })
 export class WeeklyPlannerComponent implements OnInit {
     private taskService = inject(TaskService);
+    private modeService = inject(ModeService);
 
     // Current week start date
     weekStart = new Date();
 
     // Days of the week with their tasks
     weekDays: { date: Date; dayName: string; tasks: Task[]; totalHours: number }[] = [];
+    unscheduledTasks: Task[] = [];
+    futureTasksCount = 0;
 
     // Week summary
     weekSummary = {
@@ -29,19 +33,28 @@ export class WeeklyPlannerComponent implements OnInit {
         capacityHours: 40
     };
 
+    constructor() {
+        // Reload tasks when mode changes or tasks refresh
+        effect(() => {
+            this.modeService.activeMode();
+            this.taskService.tasks(); // Dependency for refresh
+            // We no longer call initializeWeek here to prevent jumping back to current week
+            this.loadWeeklyTasks();
+        });
+    }
+
     ngOnInit() {
         this.initializeWeek();
-        this.loadWeeklyTasks();
     }
 
     // Initialize the week days
-    initializeWeek() {
-        // Get Monday of current week
-        const today = new Date();
-        const dayOfWeek = today.getDay();
+    initializeWeek(baseDate: Date = new Date()) {
+        // Get Monday of the week for the baseDate
+        const dayOfWeek = baseDate.getDay();
         const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Adjust for Sunday
-        this.weekStart = new Date(today);
-        this.weekStart.setDate(today.getDate() + diff);
+        this.weekStart = new Date(baseDate);
+        this.weekStart.setDate(baseDate.getDate() + diff);
+        this.weekStart.setHours(0, 0, 0, 0);
 
         // Create 7 days
         this.weekDays = [];
@@ -58,104 +71,91 @@ export class WeeklyPlannerComponent implements OnInit {
         }
     }
 
-    // Load weekly tasks
-    loadWeeklyTasks() {
-        // Mock data for now - will be replaced with real API call
-        const mockTasks: Task[] = [
-            {
-                id: 1,
-                title: 'Design system updates',
-                description: 'Update component library',
-                priority: TaskPriority.High,
-                type: 'Feature' as any,
-                status: 'InProgress' as any,
-                estimatedHours: 8,
-                scheduledStart: new Date(this.weekDays[0].date),
-                projectId: 1,
-                createdById: 1,
-                createdAt: new Date()
-            },
-            {
-                id: 2,
-                title: 'API integration',
-                description: 'Connect frontend to backend',
-                priority: TaskPriority.High,
-                type: 'Feature' as any,
-                status: 'Todo' as any,
-                estimatedHours: 12,
-                scheduledStart: new Date(this.weekDays[1].date),
-                projectId: 1,
-                createdById: 1,
-                createdAt: new Date()
-            },
-            {
-                id: 3,
-                title: 'Code review',
-                description: 'Review team PRs',
-                priority: TaskPriority.Medium,
-                type: 'Improvement' as any,
-                status: 'Todo' as any,
-                estimatedHours: 4,
-                scheduledStart: new Date(this.weekDays[2].date),
-                projectId: 1,
-                createdById: 1,
-                createdAt: new Date()
-            },
-            {
-                id: 4,
-                title: 'Sprint planning',
-                description: 'Plan next sprint',
-                priority: TaskPriority.Medium,
-                type: 'Feature' as any,
-                status: 'Todo' as any,
-                estimatedHours: 3,
-                scheduledStart: new Date(this.weekDays[3].date),
-                projectId: 1,
-                createdById: 1,
-                createdAt: new Date()
-            },
-            {
-                id: 5,
-                title: 'Bug fixes',
-                description: 'Fix reported issues',
-                priority: TaskPriority.High,
-                type: 'Bug' as any,
-                status: 'Todo' as any,
-                estimatedHours: 6,
-                scheduledStart: new Date(this.weekDays[4].date),
-                projectId: 1,
-                createdById: 1,
-                createdAt: new Date()
-            }
-        ];
-
-        // Distribute tasks to days
-        this.distributeTasks(mockTasks);
-        this.calculateSummary();
+    // Navigation Methods
+    nextWeek() {
+        const next = new Date(this.weekStart);
+        next.setDate(this.weekStart.getDate() + 7);
+        this.initializeWeek(next);
+        this.loadWeeklyTasks();
     }
 
-    // Distribute tasks to their scheduled days
+    previousWeek() {
+        const prev = new Date(this.weekStart);
+        prev.setDate(this.weekStart.getDate() - 7);
+        this.initializeWeek(prev);
+        this.loadWeeklyTasks();
+    }
+
+    goToToday() {
+        this.initializeWeek(new Date());
+        this.loadWeeklyTasks();
+    }
+
+    // Load weekly tasks
+    loadWeeklyTasks() {
+        this.taskService.getWeeklyTasks(this.weekStart).subscribe({
+            next: (tasks) => {
+                // Show all tasks (synchronize with Dashboard)
+                const allTasks = tasks;
+
+                // Reset day tasks before distributing
+                this.weekDays.forEach(d => {
+                    d.tasks = [];
+                    d.totalHours = 0;
+                });
+
+                // Distribute tasks to days
+                this.distributeTasks(allTasks);
+                this.calculateSummary();
+            },
+            error: (err) => console.error('Failed to load weekly tasks:', err)
+        });
+    }
+
+    // Distribute tasks to their scheduled days or due dates
     distributeTasks(tasks: Task[]) {
+        this.unscheduledTasks = [];
+        this.futureTasksCount = 0;
+
         tasks.forEach(task => {
-            if (task.scheduledStart) {
-                const taskDate = new Date(task.scheduledStart);
+            const dateToUse = task.scheduledStart || task.dueDate;
+
+            if (dateToUse) {
+                const taskDate = new Date(dateToUse);
+                const taskYear = taskDate.getFullYear();
+                const taskMonth = taskDate.getMonth();
+                const taskDay = taskDate.getDate();
+
+                // Find the specific day in our weekDays array
                 const day = this.weekDays.find(d =>
-                    d.date.toDateString() === taskDate.toDateString()
+                    d.date.getFullYear() === taskYear &&
+                    d.date.getMonth() === taskMonth &&
+                    d.date.getDate() === taskDay
                 );
+
                 if (day) {
                     day.tasks.push(task);
                     day.totalHours += task.estimatedHours || 0;
+                } else if (taskDate > this.weekDays[6].date) {
+                    // It's in a future week
+                    this.futureTasksCount++;
+                } else if (taskDate < this.weekStart) {
+                    // Overdue
+                    this.unscheduledTasks.push(task);
                 }
+            } else {
+                // Completely unscheduled
+                this.unscheduledTasks.push(task);
             }
         });
     }
 
     // Calculate week summary
     calculateSummary() {
-        this.weekSummary.totalTasks = this.weekDays.reduce((sum, day) => sum + day.tasks.length, 0);
+        this.weekSummary.totalTasks = this.weekDays.reduce((sum, day) => sum + day.tasks.length, 0) + this.unscheduledTasks.length;
         this.weekSummary.completedTasks = this.weekDays.reduce((sum, day) =>
             sum + day.tasks.filter(t => t.status === 'Done').length, 0
-        );
+        ) + this.unscheduledTasks.filter(t => t.status === 'Done').length;
         this.weekSummary.totalHours = this.weekDays.reduce((sum, day) => sum + day.totalHours, 0);
     }
 

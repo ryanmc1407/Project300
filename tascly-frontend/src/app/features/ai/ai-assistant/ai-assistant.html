@@ -1,0 +1,18 @@
+<div class="ai-assistant-container">
+    <div class="tabs-header">
+        <button class="tab-btn" [class.active]="activeTab() === 'generator'" (click)="setActiveTab('generator')">
+           Task Generator
+        </button>
+        <button class="tab-btn" [class.active]="activeTab() === 'instructions'" (click)="setActiveTab('instructions')">
+            My Instructions
+        </button>
+    </div>
+
+    <div class="tab-content">
+        @if (activeTab() === 'generator') {
+        <app-ai-prompt></app-ai-prompt>
+        } @else {
+        <app-ai-instructions></app-ai-instructions>
+        }
+    </div>
+</div>

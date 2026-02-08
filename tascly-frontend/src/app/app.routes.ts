@@ -45,16 +45,9 @@ export const routes: Routes = [
         loadComponent: () => import('./features/planner/weekly-planner/weekly-planner').then(m => m.WeeklyPlannerComponent)
     },
     {
-        path: 'ai-instructions',
+        path: 'ai-assistant',
         canActivate: [authGuard],
-        loadComponent: () => import('./features/ai/ai-instructions/ai-instructions').then(m => m.AIInstructionsComponent)
-    },
-    {
-        // I added this route for the AI Task Generator feature
-        // This is where managers can use natural language to generate tasks
-        path: 'ai-task-generator',
-        canActivate: [authGuard],
-        loadComponent: () => import('./features/ai/ai-prompt/ai-prompt').then(m => m.AIPromptComponent)
+        loadComponent: () => import('./features/ai/ai-assistant/ai-assistant').then(m => m.AIAssistantComponent)
     },
     {
         path: 'project-board',

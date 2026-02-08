@@ -94,10 +94,22 @@
         </ul>
     </div>
 
-    <!-- I'm adding a placeholder for the draft tasks list -->
-    <!-- This will be shown by a child component that I'll create next -->
-    <div class="draft-tasks-placeholder">
-        <!-- The TaskDraftListComponent will be inserted here -->
-        <!-- I'll add it once I create that component -->
+    <!-- Display generated draft tasks using the reusable component -->
+    @if (aiService.draftTasks().length > 0) {
+    <div class="draft-tasks-section">
+        <app-task-draft-list [draftTasks]="aiService.draftTasks()"
+            (onConfirm)="aiService.confirmTasks($event, currentProjectId())"
+            (onEdit)="aiService.updateDraftTask($event.tempId, $event.field, $event.value)"
+            (onRemove)="aiService.removeDraftTask($event)">
+        </app-task-draft-list>
+
+        <div class="draft-actions">
+            <!-- No longer need Save All button here as it's inside the component, 
+                 but keeping clear drafts if needed -->
+            <button class="btn-clear-drafts" (click)="clearDrafts()">
+                🗑️ Discard All Drafts
+            </button>
+        </div>
     </div>
+    }
 </div>

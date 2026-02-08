@@ -6,9 +6,9 @@
             <p class="planner-subtitle">{{ getWeekRange() }}</p>
         </div>
         <div class="header-actions">
-            <button class="btn-secondary">← Previous Week</button>
-            <button class="btn-primary">This Week</button>
-            <button class="btn-secondary">Next Week →</button>
+            <button class="btn-secondary" (click)="previousWeek()">← Previous Week</button>
+            <button class="btn-primary" (click)="goToToday()">This Week</button>
+            <button class="btn-secondary" (click)="nextWeek()">Next Week →</button>
         </div>
     </div>
 
@@ -36,36 +36,75 @@
         </div>
     </div>
 
-    <!-- Weekly Grid -->
-    <div class="weekly-grid">
-        @for (day of weekDays; track day.date) {
-        <div class="day-column" [class.today]="isToday(day.date)">
-            <div class="day-header">
-                <div class="day-name">{{ day.dayName }}</div>
-                <div class="day-date">{{ day.date.getDate() }}</div>
-                <div class="day-workload" [class]="getWorkloadClass(day.totalHours)">
-                    {{ day.totalHours }}h
+    <!-- Main Content -->
+    <div class="planner-content">
+        <!-- Weekly Grid -->
+        <div class="weekly-grid">
+            @for (day of weekDays; track day.date) {
+            <div class="day-column" [class.today]="isToday(day.date)">
+                <div class="day-header">
+                    <div class="day-name">{{ day.dayName }}</div>
+                    <div class="day-date">{{ day.date.getDate() }}</div>
+                    <div class="day-workload" [class]="getWorkloadClass(day.totalHours)">
+                        {{ day.totalHours }}h
+                    </div>
+                </div>
+
+                <div class="day-tasks">
+                    @if (day.tasks.length === 0) {
+                    <div class="empty-day">No tasks</div>
+                    }
+                    @for (task of day.tasks; track task.id) {
+                    <div class="week-task" [class]="getPriorityClass(task.priority)">
+                        <div class="task-priority-indicator" [class]="getPriorityClass(task.priority)"></div>
+                        <div class="task-content">
+                            <div class="task-title">{{ task.title }}</div>
+                            @if (task.estimatedHours) {
+                            <div class="task-hours">{{ task.estimatedHours }}h</div>
+                            }
+                            <div class="task-type">{{ task.type }}</div>
+                        </div>
+                    </div>
+                    }
                 </div>
             </div>
+            }
+        </div>
 
-            <div class="day-tasks">
-                @if (day.tasks.length === 0) {
-                <div class="empty-day">No tasks</div>
+        <!-- Unscheduled Tasks Sidebar -->
+        <div class="unscheduled-sidebar">
+            <div class="sidebar-header">
+                <h2>Backlog / Unscheduled</h2>
+            </div>
+
+            <div class="unscheduled-list">
+                @if (futureTasksCount > 0) {
+                <div class="future-tasks-hint">
+                    <span class="hint-icon">📅</span>
+                    <span class="hint-text"><b>{{ futureTasksCount }}</b> tasks scheduled for future weeks</span>
+                </div>
                 }
-                @for (task of day.tasks; track task.id) {
-                <div class="week-task" [class]="getPriorityClass(task.priority)">
-                    <div class="task-priority-indicator" [class]="getPriorityClass(task.priority)"></div>
-                    <div class="task-content">
-                        <div class="task-title">{{ task.title }}</div>
+
+                @if (unscheduledTasks.length === 0) {
+                <div class="empty-state">
+                    <p>No unscheduled tasks</p>
+                </div>
+                }
+                @for (task of unscheduledTasks; track task.id) {
+                <div class="unscheduled-item" [class]="getPriorityClass(task.priority)">
+                    <div class="item-title">{{ task.title }}</div>
+                    <div class="item-meta">
+                        <span class="item-priority" [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>
                         @if (task.estimatedHours) {
-                        <div class="task-hours">{{ task.estimatedHours }}h</div>
+                        <span class="item-hours">{{ task.estimatedHours }}h</span>
                         }
-                        <div class="task-type">{{ task.type }}</div>
                     </div>
+                    @if (task.assignedTo) {
+                    <div class="item-assignee">Assigned to: {{ task.assignedTo.name }}</div>
+                    }
                 </div>
                 }
             </div>
         </div>
-        }
     </div>
 </div>

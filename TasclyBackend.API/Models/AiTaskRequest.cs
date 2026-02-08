@@ -24,39 +24,48 @@ public record AiTaskRequest(
     int UserId
 );
 
-// I created this record to represent a single draft task from the AI
+// I created this class to represent a single draft task from the AI
 // This is what the AI returns before the tasks are saved to the database
-public record DraftTask(
+public class DraftTask
+{
     // I'm using a temporary ID to track tasks in the frontend
     // This isn't a database ID yet, just for UI management
-    int TempId,
+    // Using long because JavaScript Date.now() returns timestamps that exceed int.MaxValue
+    public long TempId { get; set; }
     
     // The AI generates these core task properties
-    string Title,
-    string Description,
+    public string Title { get; set; } = string.Empty;
+    
+    public string Description { get; set; } = string.Empty;
     
     // I'm using strings for priority and type to match the frontend
     // I'll convert these to enums when saving to the database
-    string Priority,
-    int EstimatedHours,
+    public string Priority { get; set; } = string.Empty;
+    
+    public decimal EstimatedHours { get; set; }
     
     // The AI suggests an assignee based on team member skills
     // I made this nullable because not all tasks need immediate assignment
-    string? SuggestedAssignee,
+    public string? SuggestedAssignee { get; set; }
     
-    string Type
-);
+    public string Type { get; set; } = string.Empty;
 
-// I created this record for the bulk task creation request
+    // Temporal fields allowing the AI to specify when tasks should occur
+    public DateTime? ScheduledStart { get; set; }
+    public DateTime? DueDate { get; set; }
+}
+
+// I created this class for the bulk task creation request
 // This is sent when the user approves the draft tasks
-public record BulkTaskCreateRequest(
+public class BulkTaskCreateRequest
+{
     // The list of tasks that have been reviewed and approved
     // The user may have edited these from the AI's original suggestions
-    List<DraftTask> Tasks,
+    public List<DraftTask> Tasks { get; set; } = new();
     
     // Which project these tasks should be created in
-    int ProjectId
-);
+    public int ProjectId { get; set; }
+}
 
 // I created this record for the AI's response
 // This wraps the draft tasks with additional metadata

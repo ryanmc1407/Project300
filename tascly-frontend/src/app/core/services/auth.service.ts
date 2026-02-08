@@ -110,7 +110,7 @@ export class AuthService {
 
         // Create user object from response
         const user: User = {
-            id: 0, // Backend doesn't send ID in auth response, will be set later
+            id: response.userId || 0, // Use userId from backend response
             username: response.username,
             email: response.email
         };

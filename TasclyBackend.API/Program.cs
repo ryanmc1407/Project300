@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using TasclyBackend.API.Data;
 using TasclyBackend.API.Services;
 using TasclyBackend.API.Repositories;
+using Amazon.Extensions.NETCore.Setup;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,10 @@ builder.Services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
 
 // I'm registering AiTaskService with HttpClient to communicate with xAI
 builder.Services.AddHttpClient<IAiTaskService, AiTaskService>();
+
+// AWS Service Registration
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+builder.Services.AddAWSService<Amazon.Lambda.IAmazonLambda>();
 
 // Configure JWT Authentication
 // This tells ASP.NET Core how to validate JWT tokens
@@ -56,8 +61,21 @@ builder.Services.AddAuthentication(options =>
 // Add authorization services
 builder.Services.AddAuthorization();
 
-// Add controllers
-builder.Services.AddControllers();
+// Add controllers with JSON options to handle circular references
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // I'm configuring JSON serialization to handle circular references
+        // This prevents infinite loops when serializing related entities
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        
+        // I'm converting enums to strings for better compatibility with the Angular frontend
+        // This means the frontend sees "High" instead of 3
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+        
+        // I'm explicitly setting CamelCase naming policy to ensure frontend property matching
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
 
 // Configure CORS to allow requests from the Angular frontend
 // CORS = Cross-Origin Resource Sharing
@@ -91,7 +109,8 @@ if (app.Environment.IsDevelopment())
 }
 
 // Redirect HTTP to HTTPS for security
-app.UseHttpsRedirection();
+// Commented out for development to avoid CORS preflight redirect issues
+// app.UseHttpsRedirection();
 
 // Enable CORS - this must come before authentication!
 app.UseCors("AllowAngularApp");
@@ -104,5 +123,12 @@ app.UseAuthorization();
 
 // Map controller endpoints
 app.MapControllers();
+
+// Ensure the database is created
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureCreated();
+}
 
 app.Run();

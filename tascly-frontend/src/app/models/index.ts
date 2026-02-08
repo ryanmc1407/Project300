@@ -28,6 +28,7 @@ export interface AuthResponse {
   refreshToken: string;
   username: string;
   email: string;
+  userId: number; // User ID from backend
 }
 
 // This is what I send when refreshing the access token
@@ -42,6 +43,7 @@ export interface Project {
   description?: string;
   ownerId: number;
   createdAt: Date;
+  userRole?: string; // Role of the current user in this project
 }
 
 // This is what I send when creating a new project

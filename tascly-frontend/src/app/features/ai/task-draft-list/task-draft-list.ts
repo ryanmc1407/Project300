@@ -21,7 +21,7 @@ export class TaskDraftListComponent {
     // I'm using output events to communicate back to the parent component
     // These emit when the user wants to confirm or edit tasks
     onConfirm = output<DraftTask[]>();
-    onEdit = output<{ tempId: number, field: string, value: any }>();
+    onEdit = output<{ tempId: number, field: keyof DraftTask, value: any }>();
     onRemove = output<number>();
 
     // I'm tracking which tasks are selected using a Set for efficient lookups
@@ -177,5 +177,40 @@ export class TaskDraftListComponent {
         } else {
             return `${hours} hours`;
         }
+    }
+
+    // I'm formatting date strings for display with a "Smart" label (Today, Tomorrow, etc.)
+    getSmartDateLabel(dateStr: string | Date): string {
+        const date = new Date(dateStr);
+        const today = new Date();
+        const tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+
+        const timeStr = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+        if (date.toDateString() === today.toDateString()) {
+            return `Today at ${timeStr}`;
+        } else if (date.toDateString() === tomorrow.toDateString()) {
+            return `Tomorrow at ${timeStr}`;
+        } else {
+            return `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} at ${timeStr}`;
+        }
+    }
+
+    // Checking if a date is today for styling purposes
+    isDateToday(dateStr: string | Date): boolean {
+        const date = new Date(dateStr);
+        return date.toDateString() === new Date().toDateString();
+    }
+
+    // I created this method to format date strings for display
+    formatDate(dateStr: string | Date): string {
+        const date = new Date(dateStr);
+        return date.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit'
+        });
     }
 }

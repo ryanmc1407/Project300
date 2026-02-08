@@ -14,7 +14,18 @@ export class TaskService {
     // Signal to hold the current tasks
     tasks = signal<Task[]>([]);
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        // Initial load
+        this.refreshTasks();
+    }
+
+    // Refresh the task list signal
+    refreshTasks(): void {
+        this.getAllTasks().subscribe({
+            next: (tasks) => this.tasks.set(tasks),
+            error: (err) => console.error('Failed to refresh tasks:', err)
+        });
+    }
 
     // Get all tasks
     getAllTasks(): Observable<Task[]> {
@@ -26,16 +37,23 @@ export class TaskService {
         return this.http.get<Task>(`${this.apiUrl}/${id}`);
     }
 
-    // Get tasks for today (scheduled for today)
-    getTodaysTasks(): Observable<Task[]> {
-        const today = new Date().toISOString().split('T')[0];
-        return this.http.get<Task[]>(`${this.apiUrl}/daily/${today}`);
+    // Get tasks for a specific date (defaults to today)
+    getTodaysTasks(date: Date = new Date()): Observable<Task[]> {
+        const dateStr = this.formatDate(date);
+        return this.http.get<Task[]>(`${this.apiUrl}/daily/${dateStr}`);
     }
 
     // Get tasks for a specific week
     getWeeklyTasks(startDate: Date): Observable<Task[]> {
-        const dateStr = startDate.toISOString().split('T')[0];
+        const dateStr = this.formatDate(startDate);
         return this.http.get<Task[]>(`${this.apiUrl}/weekly/${dateStr}`);
+    }
+
+    private formatDate(date: Date): string {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
 
     // Get tasks by status

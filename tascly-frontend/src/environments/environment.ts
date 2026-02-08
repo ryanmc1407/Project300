@@ -2,5 +2,5 @@
 // This is where I store my API URL and other environment-specific settings
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:7000/api' // My .NET backend URL
+    apiUrl: 'http://localhost:5200/api' // My .NET backend URL
 };

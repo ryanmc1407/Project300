@@ -15,6 +15,12 @@ export interface Task {
     scheduledEnd?: Date;
     projectId: number;
     assignedToId?: number;
+    assignedTo?: {
+        id: number;
+        name: string;
+        email: string;
+        avatarUrl?: string;
+    };
     createdById: number;
     sprintId?: number;
     createdAt: Date;
@@ -23,9 +29,9 @@ export interface Task {
 
 // Enum for task priority levels
 export enum TaskPriority {
-    Low = 1,
-    Medium = 2,
-    High = 3
+    Low = 'Low',
+    Medium = 'Medium',
+    High = 'High'
 }
 
 // Enum for task types

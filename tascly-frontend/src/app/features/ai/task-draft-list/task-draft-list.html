@@ -102,6 +102,25 @@
                         </span>
                     </div>
                     }
+
+                    <!-- I'm showing the scheduled time if provided -->
+                    @if (task.scheduledStart) {
+                    <div class="metadata-item">
+                        <label class="metadata-label">Start:</label>
+                        <span class="date-chip" [class.today]="isDateToday(task.scheduledStart)">
+                            {{ getSmartDateLabel(task.scheduledStart) }}
+                        </span>
+                    </div>
+                    }
+
+                    @if (task.dueDate) {
+                    <div class="metadata-item">
+                        <label class="metadata-label">Due:</label>
+                        <span class="date-chip" [class.today]="isDateToday(task.dueDate)">
+                            {{ getSmartDateLabel(task.dueDate) }}
+                        </span>
+                    </div>
+                    }
                 </div>
 
                 <!-- I'm making the description editable -->

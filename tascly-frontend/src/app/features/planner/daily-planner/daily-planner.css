@@ -23,6 +23,24 @@
     margin: 0;
 }
 
+/* I'm styling the future tasks hint in the sidebar */
+.future-tasks-hint {
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: #FEFCE8;
+    border: 1px solid #FEF08A;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #854D0E;
+}
+
+.hint-icon {
+    font-size: 18px;
+}
+
 .header-actions {
     display: flex;
     gap: 12px;
@@ -191,6 +209,13 @@
 .priority-badge.low {
     background-color: #3B82F6;
     color: white;
+}
+
+.task-assignee {
+    font-size: 11px;
+    color: #6B7280;
+    font-style: italic;
+    margin-bottom: 8px;
 }
 
 .task-description {

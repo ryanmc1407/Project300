@@ -7,13 +7,13 @@ namespace TasclyBackend.API.Services;
 public interface IAuthService
 {
     // Register a new user - returns the auth response with tokens
-    Task<AuthResponseDto> RegisterAsync(RegisterDto registerDto);
+    Task<AuthResponse?> RegisterAsync(RegisterDto registerDto);
     
     // Log in an existing user - returns tokens if credentials are valid
-    Task<AuthResponseDto?> LoginAsync(LoginDto loginDto);
+    Task<AuthResponse?> LoginAsync(LoginDto loginDto);
     
     // Refresh the access token using a refresh token
-    Task<AuthResponseDto?> RefreshTokenAsync(string refreshToken);
+    Task<AuthResponse?> RefreshTokenAsync(RefreshTokenDto refreshTokenDto);
     
     // Generate a JWT access token for a user
     string GenerateAccessToken(int userId, string email, string username);

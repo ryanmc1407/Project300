@@ -23,10 +23,10 @@ public class AiTaskService(
         int projectId,
         string mode)
     {
-        // I'm getting xAI configuration from appsettings.json
+        // I'm getting Groq configuration from appsettings.json
         var apiKey = configuration["AI:ApiKey"];
-        var endpoint = configuration["AI:Endpoint"] ?? "https://api.x.ai/v1/chat/completions";
-        var model = configuration["AI:Model"] ?? "grok-4-latest";
+        var endpoint = configuration["AI:Endpoint"] ?? "https://api.groq.com/openai/v1/chat/completions";
+        var model = configuration["AI:Model"] ?? "llama3-70b-8192";
 
         if (string.IsNullOrEmpty(apiKey))
         {
@@ -41,7 +41,7 @@ public class AiTaskService(
         httpClient.DefaultRequestHeaders.Authorization = 
             new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", apiKey);
 
-        // I'm creating the request body for the OpenAI-compatible xAI API
+            // I'm creating the request body for the OpenAI-compatible Groq API
         var requestBody = new
         {
             messages = new[]
@@ -52,7 +52,7 @@ public class AiTaskService(
             model = model,
             stream = false,
             temperature = 0,
-            response_format = new { type = "json_object" } // Grok supports JSON mode
+            response_format = new { type = "json_object" } // Groq supports JSON mode for Llama3
         };
 
         try 
@@ -77,7 +77,8 @@ public class AiTaskService(
             // Using case-insensitive options to be safe
             var options = new JsonSerializerOptions 
             { 
-                PropertyNameCaseInsensitive = true 
+                PropertyNameCaseInsensitive = true,
+                NumberHandling = JsonNumberHandling.AllowReadingFromString
             };
             
             var result = JsonSerializer.Deserialize<AiTaskResponse>(content, options);
@@ -92,20 +93,35 @@ public class AiTaskService(
 
     private string BuildSystemPrompt(List<TeamMember> teamMembers, string mode)
     {
-        var teamInfo = string.Join(", ", teamMembers.Select(m => 
-            $"{m.Name} ({m.Role}, Skills: {m.Skills ?? "None"})"
+        // I'm providing the current time so the AI can resolve relative dates like "Monday" or "Today"
+        var currentTime = DateTime.Now.ToString("f"); // Full date/short time
+
+        // I'm listing team members with their exact names as stored in our database
+        var teamInfo = string.Join("\n", teamMembers.Select(m => 
+            $"- Name: \"{m.Name}\" (Role: {m.Role}, Email: {m.Email}, Skills: {m.Skills ?? "None"})"
         ));
         
-        var modeContext = mode.ToLower() == "business" 
-            ? "You are managing a physical business (e.g., Office, Hospitality, Retail). Tasks should be operational, like 'Restock inventory', 'Prepare conference room', or 'Schedule staff shift'. Use terminology suitable for general business operations."
-            : "You are managing a software project (Project Mode). Tasks should be technical, like 'Implement authentication', 'Run unit tests', or 'Design database schema'. Use software development lifecycle terminology (Sprints, QA, Dev).";
+        // I'm building the system prompt based on the mode
+        var modeContext = mode == "Business" 
+            ? @"You are helping manage a hospitality or office business. Tasks should focus on operations, customer service, events, and business processes."
+            : @"You are helping manage a software or technical project. Tasks should focus on features, bugs, and improvements.";
 
-        return $@"You are an expert task manager. {modeContext}
+        return $@"You are an AI task breakdown assistant. {modeContext}
+
+CURRENT TIME: {currentTime}
 
 Your goal is to break down the user request into concrete, actionable tasks.
 
-AVAILABLE TEAM:
+AVAILABLE TEAM (USE THE EXACT NAME LISTED):
 {teamInfo}
+
+TEMPORAL AWARENESS:
+- Use the CURRENT TIME: {currentTime} as your anchor for all relative dates.
+- If the user says ""Monday"", ""Tuesday"", etc., calculate the NEXT occurrence of that day from the CURRENT TIME.
+- Example: If today is Sunday Feb 8, ""Monday"" must be Feb 9, 2026.
+- If a specific time is mentioned (e.g., ""2:00 p.m.""), populate 'scheduledStart'.
+- If a deadline is mentioned (e.g., ""by 5:00 p.m.""), populate 'dueDate'.
+- Format all dates as ISO 8601 (e.g., ""2026-02-09T14:00:00"").
 
 REQUIRED JSON OUTPUT FORMAT:
 {{
@@ -116,11 +132,20 @@ REQUIRED JSON OUTPUT FORMAT:
       ""description"": ""Detailed description"",
       ""priority"": ""High"" | ""Medium"" | ""Low"",
       ""estimatedHours"": number,
-      ""suggestedAssignee"": ""Team Name"" or null,
-      ""type"": ""Feature"" | ""Bug"" | ""Improvement""
+      ""suggestedAssignee"": ""Exact Name from Available Team"" or null,
+      ""type"": ""Feature"" | ""Bug"" | ""Improvement"",
+      ""scheduledStart"": ""ISO8601 Date String"" or null,
+      ""dueDate"": ""ISO8601 Date String"" or null
     }}
   ]
 }}
+
+IMPORTANT: 
+1. The 'type' field must be EXACTLY one of: ""Feature"", ""Bug"", or ""Improvement"".
+2. The 'suggestedAssignee' MUST EXACTLY match one of the Names provided in the AVAILABLE TEAM list (case-sensitive).
+3. Populate 'scheduledStart' if a specific start time is mentioned. Populate 'dueDate' if a deadline is mentioned.
+4. If no time is mentioned, leave those fields null.
+
 Strictly return valid JSON only.";
     }
 
