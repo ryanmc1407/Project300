@@ -8,6 +8,7 @@ import { firstValueFrom } from 'rxjs';
 import { DraftTask, AiTaskRequest, BulkTaskCreateRequest, AiTaskResponse } from '../../models/draft-task.model';
 import { ModeService } from './mode.service';
 import { TaskService } from './task.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root' // I'm making this a singleton service available throughout my app
@@ -20,9 +21,9 @@ export class AiTaskGeneratorService {
     // Inject TaskService to refresh tasks after saving
     private taskService = inject(TaskService);
 
-    // I'm storing my API base URL here so I can easily change it if needed
-    // In production, I'd move this to an environment file
-    private apiUrl = 'https://localhost:7000/api';
+    // I'm using the environment configuration for the API URL
+    // This way it automatically uses the correct port (5200 for development)
+    private apiUrl = environment.apiUrl;
 
     // I'm using signals to expose the state to my components
     // draftTasks holds the list of generated tasks
@@ -108,7 +109,7 @@ export class AiTaskGeneratorService {
 
             // I'm sending the tasks to the backend to be saved in the database
             await firstValueFrom(
-                this.http.post(`${this.apiUrl}/tasks/bulk-create`, request)
+                this.http.post(`${this.apiUrl}/tasks/bulk`, request)
             );
 
             // I'm clearing the draft tasks since they've been successfully created

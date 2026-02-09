@@ -1,6 +1,6 @@
 // I created this component to be the main interface for AI task generation
 // This is where managers can type or speak their task requests
-// I'm using Angular 19's standalone components and signals for reactive state
+
 
 import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';

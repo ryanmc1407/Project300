@@ -11,8 +11,7 @@ public interface ITeamMemberRepository
     // The AI uses this list to suggest who should be assigned to tasks
     System.Threading.Tasks.Task<List<TeamMember>> GetByProjectIdAsync(int projectId);
     
-    // I might add more methods later, like:
-    // Task<TeamMember?> GetByIdAsync(int id);
+   
     System.Threading.Tasks.Task AddAsync(TeamMember member);
     System.Threading.Tasks.Task<TeamMember?> GetByProjectAndEmailAsync(int projectId, string email);
     System.Threading.Tasks.Task<List<TeamMember>> GetByUserIdAsync(int userId);

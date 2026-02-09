@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TeamMember, TeamMemberStatus } from '../../models/team-member.model';
+import { environment } from '../../../environments/environment';
 
 // Service for managing team members
 // Handles team member data, permissions, and status updates
@@ -9,7 +10,7 @@ import { TeamMember, TeamMemberStatus } from '../../models/team-member.model';
     providedIn: 'root'
 })
 export class TeamService {
-    private apiUrl = 'https://localhost:7000/api/team-members';
+    private apiUrl = `${environment.apiUrl}/team-members`;
 
     // Signal to hold the current team members
     teamMembers = signal<TeamMember[]>([]);

@@ -45,11 +45,14 @@
         <div class="task-card" [class.overdue]="isOverdue(task)">
             <div class="task-main">
                 <div class="task-checkbox">
-                    <input type="checkbox" [checked]="task.status === 'Done'">
+                    <input type="checkbox" [checked]="task.status === 'Done'" (change)="toggleTaskCompletion(task)">
                 </div>
                 <div class="task-content">
                     <div class="task-header">
-                        <h3 class="task-title">{{ task.title }}</h3>
+                        <h3 class="task-title"
+                            [style.text-decoration]="task.status === 'Done' ? 'line-through' : 'none'">
+                            {{ task.title }}
+                        </h3>
                         <div class="task-badges">
                             <span class="priority-badge" [class]="getPriorityClass(task.priority)">
                                 {{ task.priority }}
@@ -74,8 +77,8 @@
                 </div>
             </div>
             <div class="task-actions">
-                <button class="btn-icon">✏️</button>
-                <button class="btn-icon">🗑️</button>
+                <button class="btn-icon" title="Edit Task">✏️</button>
+                <button class="btn-icon" (click)="deleteTask(task.id!)" title="Delete Task">🗑️</button>
             </div>
         </div>
         }

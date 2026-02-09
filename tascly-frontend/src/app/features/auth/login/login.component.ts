@@ -4,13 +4,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
-// This is my login component - it's a standalone component (Angular 19 best practice)
-// Standalone components don't need NgModules, making the app simpler
 @Component({
     selector: 'app-login',
-    standalone: true, // This is the new Angular way!
+    standalone: true, 
     imports: [
-        CommonModule, // Gives me *ngIf, *ngFor, etc.
+        CommonModule, 
         ReactiveFormsModule, // For reactive forms
         RouterLink // For navigation links
     ],
@@ -18,12 +16,12 @@ import { AuthService } from '../../../core/services/auth.service';
     styleUrl: './login.component.css'
 })
 export class LoginComponent {
-    // Modern dependency injection using inject() function
+
     private authService = inject(AuthService);
     private fb = inject(FormBuilder);
     private router = inject(Router);
 
-    // Using signals for reactive state management (Angular 19)
+
     // Signals automatically update the template when the value changes
     isLoading = signal(false);
     errorMessage = signal<string | null>(null);

@@ -1,6 +1,5 @@
 // I created this component to display and manage the AI-generated draft tasks
 // This is where managers can review, edit, and approve the tasks before they're created
-// I'm using Angular 19's input signals and output events for component communication
 
 import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,8 +13,7 @@ import { DraftTask } from '../../../models/draft-task.model';
     styleUrl: './task-draft-list.css'
 })
 export class TaskDraftListComponent {
-    // I'm using Angular 19's input signal to receive the draft tasks from the parent
-    // This is the new way instead of @Input() decorator
+   
     draftTasks = input.required<DraftTask[]>();
 
     // I'm using output events to communicate back to the parent component

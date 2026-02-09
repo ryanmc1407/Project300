@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task, TaskStatus, TaskPriority } from '../../models/task.model';
+import { environment } from '../../../environments/environment';
 
 // Service for managing tasks
 // Handles CRUD operations, filtering, and scheduling
@@ -9,7 +10,7 @@ import { Task, TaskStatus, TaskPriority } from '../../models/task.model';
     providedIn: 'root'
 })
 export class TaskService {
-    private apiUrl = 'https://localhost:7000/api/tasks';
+    private apiUrl = `${environment.apiUrl}/tasks`;
 
     // Signal to hold the current tasks
     tasks = signal<Task[]>([]);

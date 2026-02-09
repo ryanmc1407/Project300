@@ -5,8 +5,6 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Amazon.Lambda;
-using Amazon.Lambda.Model;
 using TasclyBackend.API.Data;
 using TasclyBackend.API.Models;
 using TasclyBackend.API.Models.DTOs;
@@ -15,7 +13,7 @@ namespace TasclyBackend.API.Services;
 
 // This is my authentication service - it handles all the login/register logic
 // I'm using primary constructor (C# 12 feature) to inject dependencies
-public class AuthService(ApplicationDbContext context, IConfiguration configuration, IAmazonLambda lambdaClient) : IAuthService
+public class AuthService(ApplicationDbContext context, IConfiguration configuration) : IAuthService
 {
     // These are automatically available because of the primary constructor
     // context = database access
@@ -58,34 +56,7 @@ public class AuthService(ApplicationDbContext context, IConfiguration configurat
         user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7); // Refresh token lasts 7 days
         await context.SaveChangesAsync();
         
-        // Send welcome email via Lambda
-        try
-        {
-            var emailRequest = new EmailRequestDto
-            {
-                Email = user.Email,
-                Username = user.Username,
-                Message = "Welcome to Tascly! We're glad to have you."
-            };
-
-            var request = new InvokeRequest
-            {
-                FunctionName = "TasclyBackend_EmailLambda", // This name might need adjustment based on how it's deployed/configured usually, but for local mock we might need to be careful. 
-                // However, since we are not actually deploying to AWS, this will fail if we don't handle it or if we don't have local lambda setup.
-                // But the user asked to "send user email and message" using "c sharp . net".
-                // If running against real AWS, FunctionName is key.
-                // For now, I'll use the logical name.
-                Payload = JsonSerializer.Serialize(emailRequest),
-                InvocationType = InvocationType.Event // Fire and forget
-            };
-            
-            await lambdaClient.InvokeAsync(request);
-        }
-        catch (Exception ex)
-        {
-            // Don't fail registration if email fails
-            Console.WriteLine($"Failed to send email: {ex.Message}");
-        }
+        // Email sending via AWS Lambda is disabled (requires AWS credentials)
         
         // Return the response with both tokens
         return new AuthResponse

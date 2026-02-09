@@ -29,9 +29,9 @@ builder.Services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
 // I'm registering AiTaskService with HttpClient to communicate with xAI
 builder.Services.AddHttpClient<IAiTaskService, AiTaskService>();
 
-// AWS Service Registration
-builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
-builder.Services.AddAWSService<Amazon.Lambda.IAmazonLambda>();
+// AWS Service Registration (commented out - requires AWS credentials)
+// builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+// builder.Services.AddAWSService<Amazon.Lambda.IAmazonLambda>();
 
 // Configure JWT Authentication
 // This tells ASP.NET Core how to validate JWT tokens
@@ -108,11 +108,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Redirect HTTP to HTTPS for security
-// Commented out for development to avoid CORS preflight redirect issues
-// app.UseHttpsRedirection();
 
-// Enable CORS - this must come before authentication!
+
+// Enable CORS
 app.UseCors("AllowAngularApp");
 
 // Enable authentication - this checks the JWT token

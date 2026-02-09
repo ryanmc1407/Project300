@@ -34,7 +34,7 @@ public class TaskBulkRepository(ApplicationDbContext context) : ITaskBulkReposit
             var teamMembersByEmailPrefix = allMembers.ToLookup(m => m.Email.Split('@')[0].ToLower());
 
             // I'm converting the draft tasks into actual Task entities
-            var tasks = new List<TaskModel>();
+            var tasks = new List<Task>();
             
             foreach (var draft in draftTasks)
             {
@@ -53,7 +53,7 @@ public class TaskBulkRepository(ApplicationDbContext context) : ITaskBulkReposit
                     }
                 }
 
-                tasks.Add(new TaskModel
+                tasks.Add(new Task
                 {
                     Title = draft.Title,
                     Description = draft.Description,

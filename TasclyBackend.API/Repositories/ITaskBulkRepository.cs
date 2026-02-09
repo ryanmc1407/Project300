@@ -17,8 +17,4 @@ public interface ITaskBulkRepository
         int createdById              // Who is creating these tasks
     );
     
-    // I might add more bulk operations in the future, like:
-    // - Task<int> BulkUpdateStatusAsync(List<int> taskIds, TaskStatus newStatus)
-    // - Task<int> BulkDeleteAsync(List<int> taskIds)
-    // - Task<int> BulkAssignAsync(List<int> taskIds, int assigneeId)
 }

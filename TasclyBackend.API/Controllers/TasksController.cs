@@ -168,4 +168,115 @@ public class TasksController(ApplicationDbContext context, ITaskBulkRepository t
         // The frontend doesn't need the created tasks, it just needs to know they were created
         return NoContent();
     }
+
+    // PATCH: api/tasks/{id}/schedule
+    // Update task scheduled dates (for drag-and-drop)
+    [HttpPatch("{id}/schedule")]
+    public async Task<ActionResult<TaskModel>> UpdateTaskSchedule(int id, [FromBody] ScheduleUpdateDto scheduleDto)
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userIdString)) return Unauthorized();
+        var userId = int.Parse(userIdString);
+
+        // Find the task
+        var task = await context.Tasks
+            .Include(t => t.Project)
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (task == null) return NotFound();
+
+        // Check permissions - must be owner, manager, or assigned to the task
+        var isOwner = task.Project.OwnerId == userId;
+        var isManager = await context.TeamMembers
+            .AnyAsync(tm => tm.ProjectId == task.ProjectId && 
+                           tm.UserId == userId && 
+                           tm.Role == TeamRole.Manager);
+        var isAssigned = task.AssignedToId != null && 
+                        await context.TeamMembers
+                            .AnyAsync(tm => tm.Id == task.AssignedToId && tm.UserId == userId);
+
+        if (!isOwner && !isManager && !isAssigned)
+        {
+            return Forbid();
+        }
+
+        // Update the schedule
+        task.ScheduledStart = scheduleDto.ScheduledStart;
+        task.ScheduledEnd = scheduleDto.ScheduledEnd;
+
+        await context.SaveChangesAsync();
+
+        return Ok(task);
+    }
+
+    // PATCH: api/tasks/{id}/status
+    [HttpPatch("{id}/status")]
+    public async Task<ActionResult<TaskModel>> UpdateTaskStatus(int id, [FromBody] StatusUpdateDto statusDto)
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userIdString)) return Unauthorized();
+        var userId = int.Parse(userIdString);
+
+        var task = await context.Tasks
+            .Include(t => t.Project)
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (task == null) return NotFound();
+
+        // Check permissions - must be owner, manager, or assigned to the task
+        var isOwner = task.Project.OwnerId == userId;
+        var isManager = await context.TeamMembers
+            .AnyAsync(tm => tm.ProjectId == task.ProjectId && 
+                           tm.UserId == userId && 
+                           tm.Role == TeamRole.Manager);
+        var isAssigned = task.AssignedToId != null && 
+                        await context.TeamMembers
+                            .AnyAsync(tm => tm.Id == task.AssignedToId && tm.UserId == userId);
+
+        if (!isOwner && !isManager && !isAssigned)
+        {
+            return Forbid();
+        }
+
+        task.Status = statusDto.Status;
+        await context.SaveChangesAsync();
+
+        return Ok(task);
+    }
+
+    // DELETE: api/tasks/{id}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteTask(int id)
+    {
+        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userIdString)) return Unauthorized();
+        var userId = int.Parse(userIdString);
+
+        var task = await context.Tasks
+            .Include(t => t.Project)
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (task == null) return NotFound();
+
+        // Check permissions - only Owner and Manager can delete
+        var isOwner = task.Project.OwnerId == userId;
+        var isManager = await context.TeamMembers
+            .AnyAsync(tm => tm.ProjectId == task.ProjectId && 
+                           tm.UserId == userId && 
+                           tm.Role == TeamRole.Manager);
+
+        if (!isOwner && !isManager)
+        {
+            return Forbid();
+        }
+
+        context.Tasks.Remove(task);
+        await context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
+
+// DTO for schedule updates
+public record ScheduleUpdateDto(DateTime? ScheduledStart, DateTime? ScheduledEnd);
+public record StatusUpdateDto(TasclyBackend.API.Models.TaskStatus Status);

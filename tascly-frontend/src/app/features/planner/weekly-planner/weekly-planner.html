@@ -40,7 +40,7 @@
     <div class="planner-content">
         <!-- Weekly Grid -->
         <div class="weekly-grid">
-            @for (day of weekDays; track day.date) {
+            @for (day of weekDays; track day.date; let i = $index) {
             <div class="day-column" [class.today]="isToday(day.date)">
                 <div class="day-header">
                     <div class="day-name">{{ day.dayName }}</div>
@@ -50,12 +50,24 @@
                     </div>
                 </div>
 
-                <div class="day-tasks">
+                <div class="day-tasks" cdkDropList [id]="'day-' + i" [cdkDropListData]="day.tasks"
+                    [cdkDropListConnectedTo]="getDropListIds()" (cdkDropListDropped)="onTaskDrop($event, day)">
                     @if (day.tasks.length === 0) {
                     <div class="empty-day">No tasks</div>
                     }
                     @for (task of day.tasks; track task.id) {
-                    <div class="week-task" [class]="getPriorityClass(task.priority)">
+                    <div class="week-task" [class]="getPriorityClass(task.priority)"
+                        [class.completed]="task.status === 'Done'" cdkDrag [cdkDragData]="task">
+                        <div class="task-actions-overlay">
+                            <button class="action-btn complete-btn" (click)="toggleTaskCompletion($event, task)"
+                                [title]="task.status === 'Done' ? 'Mark as Todo' : 'Mark as Complete'">
+                                {{ task.status === 'Done' ? '↩️' : '✅' }}
+                            </button>
+                            <button class="action-btn delete-btn" (click)="deleteTask($event, task.id!)"
+                                title="Delete Task">
+                                🗑️
+                            </button>
+                        </div>
                         <div class="task-priority-indicator" [class]="getPriorityClass(task.priority)"></div>
                         <div class="task-content">
                             <div class="task-title">{{ task.title }}</div>
@@ -77,7 +89,8 @@
                 <h2>Backlog / Unscheduled</h2>
             </div>
 
-            <div class="unscheduled-list">
+            <div class="unscheduled-list" cdkDropList id="unscheduled-list" [cdkDropListData]="unscheduledTasks"
+                [cdkDropListConnectedTo]="getDropListIds()" (cdkDropListDropped)="onTaskDrop($event)">
                 @if (futureTasksCount > 0) {
                 <div class="future-tasks-hint">
                     <span class="hint-icon">📅</span>
@@ -91,7 +104,18 @@
                 </div>
                 }
                 @for (task of unscheduledTasks; track task.id) {
-                <div class="unscheduled-item" [class]="getPriorityClass(task.priority)">
+                <div class="unscheduled-item" [class]="getPriorityClass(task.priority)"
+                    [class.completed]="task.status === 'Done'" cdkDrag [cdkDragData]="task">
+                    <div class="task-actions-overlay">
+                        <button class="action-btn complete-btn" (click)="toggleTaskCompletion($event, task)"
+                            [title]="task.status === 'Done' ? 'Mark as Todo' : 'Mark as Complete'">
+                            {{ task.status === 'Done' ? '↩️' : '✅' }}
+                        </button>
+                        <button class="action-btn delete-btn" (click)="deleteTask($event, task.id!)"
+                            title="Delete Task">
+                            🗑️
+                        </button>
+                    </div>
                     <div class="item-title">{{ task.title }}</div>
                     <div class="item-meta">
                         <span class="item-priority" [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>

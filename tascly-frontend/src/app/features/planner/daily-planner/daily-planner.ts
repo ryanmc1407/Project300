@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskService } from '../../../core/services/task.service';
 import { Task, TaskStatus, TaskPriority, TaskType } from '../../../models/task.model';
 import { ModeService } from '../../../core/services/mode.service';
@@ -9,7 +10,7 @@ import { ModeService } from '../../../core/services/mode.service';
 @Component({
     selector: 'app-daily-planner',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, DragDropModule],
     templateUrl: './daily-planner.html',
     styleUrl: './daily-planner.css'
 })
@@ -166,5 +167,81 @@ export class DailyPlannerComponent implements OnInit {
             month: 'long',
             day: 'numeric'
         });
+    }
+
+    // Handle task drop event
+    onTaskDrop(event: CdkDragDrop<Task[]>, targetSlot?: { hour: number; tasks: Task[] }) {
+        const task = event.item.data as Task;
+
+        if (event.previousContainer === event.container) {
+            // Reordering within the same time slot
+            moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+            // Moving between different containers
+            transferArrayItem(
+                event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex
+            );
+
+            // Update task schedule if dropped on a time slot
+            if (targetSlot && task.id) {
+                const newScheduledStart = new Date(this.selectedDate);
+                newScheduledStart.setHours(targetSlot.hour, 0, 0, 0);
+
+                const newScheduledEnd = new Date(this.selectedDate);
+                newScheduledEnd.setHours(targetSlot.hour + 1, 0, 0, 0); // 1 hour duration
+
+                // Call backend to update the task
+                this.taskService.scheduleTask(task.id, newScheduledStart, newScheduledEnd).subscribe({
+                    next: () => {
+                        console.log('Task scheduled successfully');
+                    },
+                    error: (err) => {
+                        console.error('Failed to schedule task:', err);
+                        // Revert the UI change on error
+                        transferArrayItem(
+                            event.container.data,
+                            event.previousContainer.data,
+                            event.currentIndex,
+                            event.previousIndex
+                        );
+                    }
+                });
+            }
+        }
+    }
+
+    // Delete a task
+    deleteTask(event: Event, taskId: number) {
+        event.stopPropagation(); // Prevent opening task details
+        if (confirm('Are you sure you want to delete this task?')) {
+            this.taskService.deleteTask(taskId).subscribe({
+                next: () => {
+                    this.loadTodaysTasks();
+                },
+                error: (err) => console.error('Failed to delete task:', err)
+            });
+        }
+    }
+
+    // Toggle task completion status
+    toggleTaskCompletion(event: Event, task: Task) {
+        event.stopPropagation();
+        const newStatus = task.status === TaskStatus.Done ? TaskStatus.Todo : TaskStatus.Done;
+
+        this.taskService.updateTaskStatus(task.id!, newStatus).subscribe({
+            next: () => {
+                this.loadTodaysTasks();
+            },
+            error: (err) => console.error('Failed to update task status:', err)
+        });
+    }
+
+    // Get drop list IDs for connecting all lists
+    getDropListIds(): string[] {
+        const slotIds = this.timeSlots.map((_, index) => `slot-${index}`);
+        return ['unscheduled-list', ...slotIds];
     }
 }

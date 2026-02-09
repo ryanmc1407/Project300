@@ -101,4 +101,28 @@ export class TasksComponent implements OnInit {
     if (!task.dueDate) return false;
     return new Date(task.dueDate) < new Date() && task.status !== TaskStatus.Done;
   }
+
+  // Delete a task
+  deleteTask(taskId: number) {
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.taskService.deleteTask(taskId).subscribe({
+        next: () => {
+          this.loadTasks(); // Reload list
+        },
+        error: (err) => console.error('Failed to delete task:', err)
+      });
+    }
+  }
+
+  // Toggle task completion status
+  toggleTaskCompletion(task: Task) {
+    const newStatus = task.status === TaskStatus.Done ? TaskStatus.Todo : TaskStatus.Done;
+
+    this.taskService.updateTaskStatus(task.id!, newStatus).subscribe({
+      next: () => {
+        this.loadTasks(); // Reload list
+      },
+      error: (err) => console.error('Failed to update task status:', err)
+    });
+  }
 }

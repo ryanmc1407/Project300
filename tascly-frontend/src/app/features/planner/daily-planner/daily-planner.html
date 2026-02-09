@@ -20,15 +20,27 @@
                 <span class="time-range">8:00 AM - 8:00 PM</span>
             </div>
 
-            @for (slot of timeSlots; track slot.hour) {
+            @for (slot of timeSlots; track slot.hour; let i = $index) {
             <div class="time-slot">
                 <div class="slot-time">{{ slot.label }}</div>
-                <div class="slot-content">
+                <div class="slot-content" cdkDropList [id]="'slot-' + i" [cdkDropListData]="slot.tasks"
+                    [cdkDropListConnectedTo]="getDropListIds()" (cdkDropListDropped)="onTaskDrop($event, slot)">
                     @if (slot.tasks.length === 0) {
                     <div class="empty-slot">No tasks scheduled</div>
                     }
                     @for (task of slot.tasks; track task.id) {
-                    <div class="scheduled-task" [class]="getPriorityClass(task.priority)">
+                    <div class="scheduled-task" [class]="getPriorityClass(task.priority)"
+                        [class.completed]="task.status === 'Done'" cdkDrag [cdkDragData]="task">
+                        <div class="task-actions-overlay">
+                            <button class="action-btn complete-btn" (click)="toggleTaskCompletion($event, task)"
+                                [title]="task.status === 'Done' ? 'Mark as Todo' : 'Mark as Complete'">
+                                {{ task.status === 'Done' ? '↩️' : '✅' }}
+                            </button>
+                            <button class="action-btn delete-btn" (click)="deleteTask($event, task.id!)"
+                                title="Delete Task">
+                                🗑️
+                            </button>
+                        </div>
                         <div class="task-header">
                             <span class="task-title">{{ task.title }}</span>
                             <span class="priority-badge" [class]="getPriorityClass(task.priority)">
@@ -60,7 +72,8 @@
                 <button class="btn-primary btn-sm">+ New Task</button>
             </div>
 
-            <div class="unscheduled-list">
+            <div class="unscheduled-list" cdkDropList id="unscheduled-list" [cdkDropListData]="unscheduledTasks"
+                [cdkDropListConnectedTo]="getDropListIds()" (cdkDropListDropped)="onTaskDrop($event)">
                 <!-- I'm adding a hint if tasks are scheduled for future days -->
                 @if (futureTasksCount > 0) {
                 <div class="future-tasks-hint">
@@ -75,7 +88,18 @@
                 </div>
                 }
                 @for (task of unscheduledTasks; track task.id) {
-                <div class="unscheduled-task" [class]="getPriorityClass(task.priority)">
+                <div class="unscheduled-task" [class]="getPriorityClass(task.priority)"
+                    [class.completed]="task.status === 'Done'" cdkDrag [cdkDragData]="task">
+                    <div class="task-actions-overlay">
+                        <button class="action-btn complete-btn" (click)="toggleTaskCompletion($event, task)"
+                            [title]="task.status === 'Done' ? 'Mark as Todo' : 'Mark as Complete'">
+                            {{ task.status === 'Done' ? '↩️' : '✅' }}
+                        </button>
+                        <button class="action-btn delete-btn" (click)="deleteTask($event, task.id!)"
+                            title="Delete Task">
+                            🗑️
+                        </button>
+                    </div>
                     <div class="task-header">
                         <span class="task-title">{{ task.title }}</span>
                         <span class="priority-badge" [class]="getPriorityClass(task.priority)">
