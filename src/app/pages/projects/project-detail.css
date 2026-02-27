@@ -1,0 +1,54 @@
+.task-card {
+    transition: all 0.2s ease;
+    border-radius: 12px;
+}
+
+.task-card:hover {
+    transform: translateX(4px);
+    background-color: #fcfcfc;
+}
+
+.status-indicator {
+    width: 6px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: #eee;
+}
+
+.status-indicator.to-do {
+    background-color: #6c757d;
+}
+
+.status-indicator.in-progress {
+    background-color: #0d6efd;
+}
+
+.status-indicator.done {
+    background-color: #198754;
+}
+
+.badge.low {
+    color: #6c757d;
+    border-color: #6c757d !important;
+}
+
+.badge.medium {
+    color: #fd7e14;
+    border-color: #fd7e14 !important;
+}
+
+.badge.high {
+    color: #dc3545;
+    border-color: #dc3545 !important;
+}
+
+.btn-lime {
+    background-color: #d8f066;
+    color: #000;
+    border: none;
+}
+
+.btn-lime:hover {
+    background-color: #c5dc5a;
+    color: #000;
+}

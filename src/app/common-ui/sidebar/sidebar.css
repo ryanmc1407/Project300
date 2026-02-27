@@ -1,0 +1,142 @@
+/* --- Bento Sidebar Container --- */
+.bento-sidebar {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 1.5rem;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Block Cards --- */
+.organization-card,
+.user-profile-card {
+    background-color: #f8fafc;
+    border-radius: 16px;
+    padding: 12px 16px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.organization-card:hover,
+.user-profile-card:hover {
+    background-color: #ffffff;
+    border-color: #d8f066;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.org-icon-box,
+.avatar-box-small,
+.ws-icon-box {
+    width: 38px;
+    height: 38px;
+    background-color: #d8f066;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #000;
+    box-shadow: 0 2px 6px rgba(216, 240, 102, 0.2);
+}
+
+/* --- Nav Items --- */
+.sidebar-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: #475569;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-nav-item:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.sidebar-nav-active {
+    background-color: #d8f066 !important;
+    color: #000 !important;
+    font-weight: 700;
+}
+
+/* --- Workspace Tiles --- */
+.workspace-tile {
+    background-color: #f8fafc !important;
+    border: 1px solid transparent !important;
+    padding: 12px 16px !important;
+    border-radius: 16px !important;
+    transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.workspace-tile:hover,
+.workspace-tile.active {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+.workspace-tile.active {
+    border-color: #d8f066 !important;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+.rotate-chevron {
+    transform: rotate(180deg);
+}
+
+.workspace-list-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+}
+
+.workspace-list-wrapper.expanded {
+    grid-template-rows: 1fr;
+}
+
+.workspace-list-wrapper>ul {
+    overflow: hidden;
+}
+
+.workspace-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #64748b;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.workspace-item:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.sidebar-section {
+    margin-bottom: 1.5rem;
+}
+
+.modern-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}

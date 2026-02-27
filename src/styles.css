@@ -1,0 +1,111 @@
+/* Global Styles for Tascly */
+
+/* Import Google Font - must be first! */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f1f5f9;
+    /* Slightly darker background for better card contrast */
+    color: #0f172a;
+    line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove default button styles */
+button {
+    font-family: inherit;
+}
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+    outline: 2px solid #d8f066;
+    outline-offset: 2px;
+}
+
+/* =====================================================
+   Bento UI Variables & Utilities
+   ===================================================== */
+:root {
+    --bento-primary: #d8f066;
+    --bento-primary-hover: #cce64d;
+    --bento-bg: #ffffff;
+    --bento-radius: 24px;
+    --bento-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --bento-border: 1px solid rgba(0, 0, 0, 0.04);
+
+    /* Bootstrap overrides */
+    --bs-primary: #d8f066;
+    --bs-link-color: #000;
+}
+
+.bento-card {
+    background-color: var(--bento-bg);
+    border-radius: var(--bento-radius);
+    padding: 2rem;
+    height: 100%;
+    box-shadow: var(--bento-shadow);
+    border: var(--bento-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bento-page-container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Labels */
+.modern-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: #94a3b8;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* Custom Checkbox/Radio if needed... */
+
+/* Bootstrap Button Overrides */
+.btn-primary {
+    background-color: var(--bento-primary) !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--bento-primary-hover) !important;
+    box-shadow: 0 4px 12px rgba(216, 240, 102, 0.3) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--bento-primary) !important;
+    color: #000 !important;
+    font-weight: 600;
+}

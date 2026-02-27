@@ -1,0 +1,75 @@
+<div class="bento-page-container">
+    <div class="d-flex align-items-center gap-3">
+        <div>
+            <h1 class="h3 fw-bold mb-0">Business Dashboard</h1>
+            <p class="text-muted small mb-0">Welcome back, {{ username ?? 'User' }}</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="bento-card text-center">
+                <div class="display-5 fw-bold text-primary mb-1">{{ todaysTasks.total }}</div>
+                <p class="text-muted small mb-0">Today's Tasks</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bento-card text-center">
+                <div class="display-5 fw-bold text-success mb-1">{{ todaysTasks.completed }}</div>
+                <p class="text-muted small mb-0">Completed</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bento-card text-center">
+                <div class="display-5 fw-bold text-warning mb-1">{{ todaysTasks.remaining }}</div>
+                <p class="text-muted small mb-0">Remaining</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bento-card text-center">
+                <div class="display-5 fw-bold text-info mb-1">{{ teamActivity.total }}</div>
+                <p class="text-muted small mb-0">Team Updates</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 flex-grow-1">
+        <div class="col-md-6">
+            <div class="bento-card h-100">
+                <h5 class="fw-semibold mb-3">High Priority Items</h5>
+                <div class="d-flex flex-column gap-2">
+                    @for (item of highPriorityItems; track item.title) {
+                    <div class="p-3 rounded-3 border d-flex justify-content-between align-items-start">
+                        <div>
+                            <p class="fw-medium small mb-0">{{ item.title }}</p>
+                            <p class="text-muted mb-0" style="font-size:0.75rem">{{ item.assignee }} · {{ item.due
+                                }}</p>
+                        </div>
+                        <span class="badge" [class.bg-danger]="item.priority === 'high'"
+                            [class.bg-warning]="item.priority === 'medium'">{{ item.priority }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="bento-card h-100">
+                <h5 class="fw-semibold mb-3">Team Activity</h5>
+                <div class="d-flex flex-column gap-2">
+                    @for (activity of teamActivity.updates; track activity.action) {
+                    <div class="d-flex gap-3 py-2 border-bottom">
+                        <div class="rounded-circle bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center fw-bold text-secondary"
+                            style="width:32px;height:32px;font-size:0.75rem;flex-shrink:0">
+                            {{ activity.user.charAt(0) }}
+                        </div>
+                        <div>
+                            <p class="small mb-0"><strong>{{ activity.user }}</strong> {{ activity.action }}</p>
+                            <p class="text-muted mb-0" style="font-size:0.75rem">{{ activity.time }}</p>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

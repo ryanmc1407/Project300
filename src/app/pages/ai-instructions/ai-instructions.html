@@ -1,0 +1,156 @@
+<div class="container-fluid py-4 px-4">
+    <div class="d-flex align-items-center gap-3 mb-4">
+        <div class="feature-icon-lg bg-primary bg-opacity-10 rounded-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="var(--bs-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+        </div>
+        <div>
+            <h1 class="h3 fw-bold mb-0">AI Instructions</h1>
+            <p class="text-muted small mb-0">Guide for using Tascly's AI task generator effectively</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="fw-semibold mb-3">How to Use AI Task Generation</h5>
+                    <div class="accordion" id="aiHelpAccordion">
+
+                        <div class="accordion-item border-0 rounded-3 mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-medium rounded-3" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    📝 Writing Effective Prompts
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#aiHelpAccordion">
+                                <div class="accordion-body text-muted">
+                                    <p>Be specific and include context about your project. For example:</p>
+                                    <ul>
+                                        <li><strong>Good:</strong> "Create 5 tasks for building a user authentication
+                                            system with registration, login, email verification, and password reset"
+                                        </li>
+                                        <li><strong>Good:</strong> "Break down the frontend redesign project into tasks.
+                                            Assign design tasks to Sarah and dev tasks to John. Deadline: next Friday"
+                                        </li>
+                                        <li><strong>Avoid:</strong> Vague prompts like "Create some tasks"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0 rounded-3 mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-medium rounded-3" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    🎯 Task Assignment
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#aiHelpAccordion">
+                                <div class="accordion-body text-muted">
+                                    <p>Mention team member names in your prompt — the AI will try to automatically
+                                        assign tasks to them based on their names. You can always edit assignments
+                                        before confirming.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0 rounded-3 mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-medium rounded-3" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    📅 Adding Deadlines
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#aiHelpAccordion">
+                                <div class="accordion-body text-muted">
+                                    <p>Include time references like "by Friday", "within 2 weeks", or specific dates
+                                        like "by March 15th". The AI will parse these and set appropriate due dates on
+                                        the generated tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0 rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-medium rounded-3" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    ✅ Reviewing & Confirming Tasks
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse"
+                                data-bs-parent="#aiHelpAccordion">
+                                <div class="accordion-body text-muted">
+                                    <p>After generation, review the draft tasks carefully. You can remove tasks you
+                                        don't need by checking the checkboxes. Click "Create All Tasks" to save them to
+                                        your project, or regenerate with a different prompt if you're not satisfied.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-semibold mb-3">💡 Tips & Best Practices</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <li class="d-flex align-items-start gap-2">
+                            <span class="text-primary mt-1">•</span>
+                            <span class="text-muted small">Start with a clear project goal in your prompt</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <span class="text-primary mt-1">•</span>
+                            <span class="text-muted small">Mention the number of tasks you want (e.g. "Create 5
+                                tasks")</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <span class="text-primary mt-1">•</span>
+                            <span class="text-muted small">Include priority hints ("high priority: security tasks, low
+                                priority: documentation")</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <span class="text-primary mt-1">•</span>
+                            <span class="text-muted small">Try voice input for faster prompt creation</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <span class="text-primary mt-1">•</span>
+                            <span class="text-muted small">Review generated tasks before confirming — always
+                                double-check assignees and dates</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-semibold mb-3">🚀 Business vs Project Mode</h5>
+                    <p class="text-muted small mb-3">Tascly operates in two modes, and the AI adapts accordingly:</p>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="p-3 rounded-3 bg-primary bg-opacity-10">
+                            <h6 class="fw-semibold text-primary mb-1">Business Mode</h6>
+                            <p class="text-muted small mb-0">The AI generates high-level strategic tasks suitable for
+                                managers overseeing teams and cross-project deliverables.</p>
+                        </div>
+                        <div class="p-3 rounded-3 bg-success bg-opacity-10">
+                            <h6 class="fw-semibold text-success mb-1">Project Mode</h6>
+                            <p class="text-muted small mb-0">The AI generates detailed, technical tasks appropriate for
+                                project members working on specific deliverables within a project.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

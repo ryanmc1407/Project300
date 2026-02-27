@@ -1,0 +1,90 @@
+<div class="container-fluid py-4 px-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h3 fw-bold mb-0">Tasks</h1>
+            <p class="text-muted small mb-0">All tasks assigned to you</p>
+        </div>
+        <button class="btn btn-primary btn-sm" (click)="loadTasks()">
+            ↻ Refresh
+        </button>
+    </div>
+
+    <!-- Filters -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body py-3 px-4 d-flex align-items-center gap-3">
+            <input type="text" class="form-control form-control-sm w-auto flex-grow-1" [value]="searchQuery()"
+                (input)="searchQuery.set($any($event.target).value); filterTasks()" placeholder="Search tasks...">
+            <select class="form-select form-select-sm w-auto" [value]="selectedStatus()"
+                (change)="selectedStatus.set($any($event.target).value); filterTasks()">
+                <option value="all">All Statuses</option>
+                <option value="todo">To Do</option>
+                <option value="inprogress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+            <select class="form-select form-select-sm w-auto" [value]="selectedImportance()"
+                (change)="selectedImportance.set($any($event.target).value); filterTasks()">
+                <option value="all">All Priorities</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+    </div>
+
+    @if (isLoading()) {
+    <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="text-muted mt-2 small">Loading tasks...</p>
+    </div>
+    } @else if (error()) {
+    <div class="alert alert-danger">{{ error() }}</div>
+    } @else if (filteredTasks().length === 0) {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body py-5 text-center">
+            <svg class="mb-3 text-muted" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+            <p class="text-muted mb-0">No tasks found</p>
+            <p class="text-muted small">Select a project from the sidebar to view its tasks, or use the AI generator</p>
+        </div>
+    </div>
+    } @else {
+    <div class="d-flex flex-column gap-3">
+        @for (task of filteredTasks(); track task.id) {
+        <div class="card border-0 shadow-sm" [class.border-danger]="isOverdue(task)">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div class="flex-grow-1">
+                        <div class="d-flex gap-2 mb-2">
+                            <span class="badge" [class.bg-success]="task.statusName === 'Done'"
+                                [class.bg-warning]="task.statusName === 'InProgress'"
+                                [class.bg-secondary]="task.statusName === 'ToDo'">{{ task.statusName }}</span>
+                            <span class="badge" [class.bg-danger]="task.importanceName === 'High'"
+                                [class.bg-warning]="task.importanceName === 'Medium'"
+                                [class.bg-info]="task.importanceName === 'Low'">{{ task.importanceName }}</span>
+                            @if (isOverdue(task)) {
+                            <span class="badge bg-danger">Overdue</span>
+                            }
+                        </div>
+                        <h6 class="fw-semibold mb-1">{{ task.name }}</h6>
+                        <p class="text-muted small mb-2">{{ task.description }}</p>
+                        <p class="text-muted small mb-0">Due: {{ task.dueDate | date:'mediumDate' }}</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <select class="form-select form-select-sm w-auto"
+                            (change)="updateStatus(task.id, +$any($event.target).value)">
+                            <option [value]="1" [selected]="task.statusName==='ToDo'">To Do</option>
+                            <option [value]="2" [selected]="task.statusName==='InProgress'">In Progress</option>
+                            <option [value]="3" [selected]="task.statusName==='Done'">Done</option>
+                        </select>
+                        <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task.id)">✕</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>

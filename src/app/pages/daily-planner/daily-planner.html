@@ -1,0 +1,74 @@
+<div class="bento-page-container">
+    <div class="d-flex align-items-center justify-content-between">
+        <div>
+            <h1 class="h3 fw-bold mb-0">Daily Planner</h1>
+            <p class="text-muted small mb-0">{{ getFormattedDate() }}</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-secondary btn-sm" (click)="prevDay()">← Prev</button>
+            <span class="badge" [class.bg-primary]="isToday()" [class.bg-secondary]="!isToday()">{{ isToday() ? 'Today'
+                : currentDate() | date:'MMM d' }}</span>
+            <button class="btn btn-outline-secondary btn-sm" (click)="nextDay()">Next →</button>
+        </div>
+    </div>
+
+    @if (isLoading()) {
+    <div class="bento-card text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="text-muted mt-2">Loading tasks for this day...</p>
+    </div>
+    } @else if (error()) {
+    <div class="alert alert-danger bento-card">{{ error() }}</div>
+    } @else {
+    <div class="row g-4">
+        <!-- Time slots -->
+        <div class="col-md-8">
+            <div class="bento-card p-0 overflow-hidden">
+                <div class="p-0">
+                    @for (slot of timeSlots; track slot.hour) {
+                    <div class="d-flex border-bottom py-2 px-3 gap-3" [class.bg-light]="slot.tasks.length > 0">
+                        <div class="text-muted small fw-medium" style="min-width:70px">{{ slot.label }}</div>
+                        <div class="flex-grow-1 d-flex flex-column gap-1">
+                            @for (task of slot.tasks; track task.id) {
+                            <div class="p-2 rounded-2 d-flex justify-content-between align-items-center"
+                                style="background: var(--bs-primary-bg-subtle)">
+                                <span class="small fw-medium">{{ task.name }}</span>
+                                <span class="badge" [class.bg-danger]="task.importanceName === 'High'"
+                                    [class.bg-warning]="task.importanceName === 'Medium'"
+                                    [class.bg-info]="task.importanceName === 'Low'" style="font-size:0.65rem">{{
+                                    task.importanceName }}</span>
+                            </div>
+                            } @empty {
+                            <div class="text-muted" style="font-size:0.75rem;line-height:1.8rem">—</div>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Unscheduled tasks -->
+        <div class="col-md-4">
+            <div class="bento-card">
+                <h6 class="fw-semibold mb-3">Unscheduled</h6>
+                @if (unscheduledTasks.length === 0) {
+                <p class="text-muted small text-center py-3">No unscheduled tasks</p>
+                } @else {
+                <div class="d-flex flex-column gap-2">
+                    @for (task of unscheduledTasks; track task.id) {
+                    <div class="p-2 rounded-2 border">
+                        <p class="fw-medium small mb-0 text-truncate">{{ task.name }}</p>
+                        <span class="badge" [class.bg-success]="task.statusName === 'Done'"
+                            [class.bg-warning]="task.statusName === 'InProgress'"
+                            [class.bg-secondary]="task.statusName === 'ToDo'" style="font-size:0.65rem">{{
+                            task.statusName }}</span>
+                    </div>
+                    }
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    }
+</div>

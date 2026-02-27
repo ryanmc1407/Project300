@@ -1,0 +1,935 @@
+﻿Application bundle generation failed. [7.807 seconds] - 2026-02-25T04:04:09.994Z
+
+node.exe : 
+[1m[31m[31mX [41;31m[
+[41;97mERROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:
+\Users\ryanm\AppData\Roami
+ng\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (  
+  [1m[31m[31mX...r-co   
+ mpiler][0m:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:88:46:
+[37m      88 Ôöé ....widt
+h.%]="([32morg.totalCompl
+etedTasks / 
+org.totalTasks[37m) * 
+100 || ...
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:88:46:
+[37m      88 Ôöé ....widt
+h.%]="([32morg.totalCompl
+etedTasks / 
+org.totalTasks[37m) * 
+100 || ...
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:109:46:
+[37m      109 Ôöé ...widt
+h.%]="([32morg.totalInPro
+gressTasks / 
+org.totalTasks[37m) * 
+100 ||...
+          ÔòÁ             
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:109:46:
+[37m      109 Ôöé ...widt
+h.%]="([32morg.totalInPro
+gressTasks / 
+org.totalTasks[37m) * 
+100 ||...
+          ÔòÁ             
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:129:46:
+[37m      129 Ôöé ...le.w
+idth.%]="([32morg.totalTo
+DoTasks / 
+org.totalTasks[37m) * 
+100 || 0"...
+          ÔòÁ             
+     [32m~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:129:46:
+[37m      129 Ôöé ...le.w
+idth.%]="([32morg.totalTo
+DoTasks / 
+org.totalTasks[37m) * 
+100 || 0"...
+          ÔòÁ             
+     [32m~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2532: Object is 
+possibly 'undefined'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:142:114
+:
+[37m      142 Ôöé 
+...border shadow-sm 
+rounded-pill px-3 
+py-2">{{ org.members.[32m
+length[37m }}
+          ÔòÁ             
+                          
+                     
+[32m~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type 
+'OrganizationMember'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:150:82:
+[37m      150 Ôöé ...div 
+class="avatar-initials" [c
+lass.avatar-dark]="!member
+.[32misAdmin[37m"
+          ÔòÁ             
+                          
+                      
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type 
+'OrganizationMember'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:151:56:
+[37m      151 Ôöé        
+                     [clas
+s.avatar-lime]="member.[3
+2misAdmin[37m">
+          ÔòÁ             
+                          
+                  
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type 
+'OrganizationMember'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.html:158:36:
+[37m      158 Ôöé        
+                 @if (memb
+er.[32misAdmin[37m) {
+          ÔòÁ             
+                        
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/projects/get-project' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:9:27:
+[37m      9 Ôöé ...t { 
+GetProject } from [32m'..
+/../data/interfaces/projec
+ts/get-project'[37m;
+        ÔòÁ               
+           [32m~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/Users/put-user-profile
+' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.ts:5
+:31:
+[37m      5 Ôöé 
+...tUserProfile } from [3
+2m'../../data/interfaces/U
+sers/put-user-profile'[37
+m;
+        ÔòÁ               
+         [32m~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/Workspaces/get-member-
+role-dto' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/work
+space-members/workspace-me
+mbers.ts:6:33:
+[37m      6 Ôöé ...eDto 
+} from [32m'../../data/in
+terfaces/Workspaces/get-me
+mber-role-dto'[37m;
+        ÔòÁ               
+ [32m~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/proj
+ects/get-project' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+projects-service.ts:5:27:
+[37m      5 Ôöé import { 
+GetProject } from [32m'..
+/interfaces/projects/get-p
+roject'[37m;
+        ÔòÁ               
+             [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/proj
+ects/post-project' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+projects-service.ts:6:28:
+[37m      6 Ôöé import { 
+PostProject } from [32m'.
+./interfaces/projects/post
+-project'[37m;
+        ÔòÁ               
+              [32m~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/User
+s/put-user-profile' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+users-service.ts:4:31:
+[37m      4 Ôöé import { 
+PutUserProfile } from [32
+m'../interfaces/Users/put-
+user-profile'[37m;
+        ÔòÁ               
+                 [32m~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/User
+s/get-user-profile' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+users-service.ts:6:31:
+[37m      6 Ôöé import { 
+GetUserProfile } from [32
+m'../interfaces/Users/get-
+user-profile'[37m;
+        ÔòÁ               
+                 [32m~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/Work
+spaces/getworkcpaces' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+workspaces-service.ts:5:30
+:
+[37m      5 Ôöé ...rt { 
+Getworkcpaces } from [32m
+'../interfaces/Workspaces/
+getworkcpaces'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/Work
+spaces/get-member-role-dto
+' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+workspaces-service.ts:6:33
+:
+[37m      6 Ôöé 
+...emberRoleDto } from [3
+2m'../interfaces/Workspace
+s/get-member-role-dto'[37
+m;
+        ÔòÁ               
+         [32m~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../interfaces/Work
+spaces/post-workspace' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/services/
+workspaces-service.ts:7:30
+:
+[37m      7 Ôöé ...t { 
+PostWorkspace } from [32m
+'../interfaces/Workspaces/
+post-workspace'[37m;
+        ÔòÁ               
+              [32m~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './ai-i
+nstructions.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/ai-instr
+uctions/ai-instructions.ts
+:8:17:
+[37m      8 Ôöé     
+templateUrl: [32m'./ai-in
+structions.html'[37m,
+        ÔòÁ               
+   [32m~~~~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./ai-prompt.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/ai-promp
+t/ai-prompt.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./ai-pr
+ompt.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './busi
+ness-dashboard.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/business
+-dashboard/business-dashbo
+ard.ts:9:17:
+[37m      9 Ôöé     
+templateUrl: [32m'./busin
+ess-dashboard.html'[37m,
+        ÔòÁ               
+   [32m~~~~~~~~~~~~~~~~~~
+~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './dail
+y-planner.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/daily-pl
+anner/daily-planner.ts:10:
+17:
+[37m      10 Ôöé     
+templateUrl: [32m'./daily
+-planner.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../common-ui/si
+debar/sidebar' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/dashboar
+d/dashboard/dashboard.ts:2
+:24:
+[37m      2 Ôöé import { 
+Sidebar } from [32m'../..
+/common-ui/sidebar/sidebar
+'[37m;
+        ÔòÁ               
+          [32m~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG1010: 'imports' 
+must be an array of 
+components, directives, 
+pipes, or NgModules.
+  Value could not be 
+determined 
+statically.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/dashboar
+d/dashboard/dashboard.ts:7
+:14:
+[37m      7 Ôöé     
+imports: 
+[[32mSidebar[37m, 
+RouterOutlet],
+        ÔòÁ               
+[32m~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/pages/dashboar
+d/dashboard/dashboard.ts:7
+:14:
+[37m      7 Ôöé     
+imports: 
+[[32mSidebar[37m, 
+RouterOutlet],
+        ÔòÁ               
+[32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../auth/auth' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:4:21:
+[37m      4 Ôöé import { 
+Auth } from [32m'../../au
+th/auth'[37m;
+        ÔòÁ               
+       
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:29:12:
+[37m      29 Ôöé         
+    [32mthis.authService
+[37m.login(this.form.value
+).subscribe({
+         ÔòÁ             
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'res' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:30:23:
+[37m      30 Ôöé         
+        next: 
+([32mres[37m) => {
+         ÔòÁ              
+          [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:33:24:
+[37m      33 Ôöé         
+        error: 
+([32merr[37m) => {
+         ÔòÁ              
+           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../auth/auth' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/register
+/register/register.ts:4:21
+:
+[37m      4 Ôöé import { 
+Auth } from [32m'../../au
+th/auth'[37m;
+        ÔòÁ               
+       
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/register
+/register/register.ts:50:1
+2:
+[37m      50 Ôöé         
+    [32mthis.authService
+[37m.register(payload).sub
+scribe({
+         ÔòÁ             
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/register
+/register/register.ts:54:2
+4:
+[37m      54 Ôöé         
+        error: 
+([32merr[37m) => {
+         ÔòÁ              
+           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./settings.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/settings
+/settings.ts:11:17:
+[37m      11 Ôöé     
+templateUrl: [32m'./setti
+ngs.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./tasks.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/tasks/ta
+sks.ts:11:17:
+[37m      11 Ôöé     
+templateUrl: 
+[32m'./tasks.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./teams.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/teams/te
+ams.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: 
+[32m'./teams.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './week
+ly-planner.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/weekly-p
+lanner/weekly-planner.ts:1
+0:17:
+[37m      10 Ôöé     
+templateUrl: [32m'./weekl
+y-planner.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+[39m[22m

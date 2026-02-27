@@ -1,0 +1,50 @@
+<div class="container-fluid py-4 px-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h3 fw-bold mb-0">Weekly Planner</h1>
+            <p class="text-muted small mb-0">{{ getWeekLabel() }}</p>
+        </div>
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm" (click)="prevWeek()">← Prev</button>
+            <button class="btn btn-outline-secondary btn-sm" (click)="nextWeek()">Next →</button>
+        </div>
+    </div>
+
+    @if (isLoading()) {
+    <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="text-muted mt-2">Loading weekly tasks...</p>
+    </div>
+    } @else if (error()) {
+    <div class="alert alert-danger small">{{ error() }}</div>
+    } @else {
+    <div class="row g-3">
+        @for (day of weekDays; track day.label) {
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" [class.border-primary]="isToday(day.date)"
+                [class.border-2]="isToday(day.date)">
+                <div class="card-header border-0 py-3" [class.bg-primary]="isToday(day.date)"
+                    [class.bg-transparent]="!isToday(day.date)">
+                    <p class="fw-semibold mb-0 small" [class.text-white]="isToday(day.date)">{{ day.label }}</p>
+                    <p class="mb-0" [class.text-white]="isToday(day.date)" [class.text-muted]="!isToday(day.date)"
+                        style="font-size:0.75rem">{{ day.date | date:'MMM d' }}</p>
+                </div>
+                <div class="card-body p-2 d-flex flex-column gap-2">
+                    @for (task of day.tasks; track task.id) {
+                    <div class="p-2 rounded-2" style="background: var(--bs-primary-bg-subtle)">
+                        <p class="fw-medium small mb-0 text-truncate">{{ task.name }}</p>
+                        <span class="badge" [class.bg-danger]="task.importanceName === 'High'"
+                            [class.bg-warning]="task.importanceName === 'Medium'"
+                            [class.bg-secondary]="task.importanceName === 'Low'" style="font-size:0.65rem">{{
+                            task.importanceName }}</span>
+                    </div>
+                    } @empty {
+                    <p class="text-muted text-center small py-3 mb-0">No tasks</p>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>

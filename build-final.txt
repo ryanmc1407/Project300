@@ -1,0 +1,3598 @@
+﻿Application bundle generation failed. [9.266 seconds] - 2026-02-25T04:00:21.659Z
+
+node.exe : 
+[1m[31m[31mX [41;31m[
+[41;97mERROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../environments
+/environment.development' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:
+\Users\ryanm\AppData\Roami
+ng\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (  
+  [1m[31m[31mX...r-co   
+ mpiler][0m:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+    src/app/auth/auth/auth
+.ts:3:28:
+[37m      3 Ôöé ... { 
+environment } from [32m'.
+./../environments/environm
+ent.development'[37m;
+        ÔòÁ               
+           [32m~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/header/header.html:2
+2:29:
+[37m      22 Ôöé         
+    @if (authService.[32m
+isAuth[37m) {
+         ÔòÁ              
+                
+[32m~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Header.
+
+    src/app/common-ui/comm
+on-ui/header/header.ts:10:
+14:
+[37m      10 Ôöé   
+templateUrl: 
+[32m'./header.html'[37m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/header/header.html:3
+1:43:
+[37m      31 Ôöé ...     
+            {{ authService
+.[32musername[37m?.charA
+t(0) | uppercase }}
+         ÔòÁ              
+                      
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Header.
+
+    src/app/common-ui/comm
+on-ui/header/header.ts:10:
+14:
+[37m      10 Ôöé   
+templateUrl: 
+[32m'./header.html'[37m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/header/header.html:3
+6:47:
+[37m      36 Ôöé         
+                        
+{{ authService.[32muserna
+me[37m }}
+         ÔòÁ              
+                          
+        [32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Header.
+
+    src/app/common-ui/comm
+on-ui/header/header.ts:10:
+14:
+[37m      10 Ôöé   
+templateUrl: 
+[32m'./header.html'[37m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../auth/auth' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/header/header.ts:3:2
+1:
+[37m      3 Ôöé import { 
+Auth } from [32m'../../au
+th/auth'[37m;
+        ÔòÁ               
+       
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/header/header.ts:23:
+2:
+[37m      23 Ôöé     [32
+mthis.authService[37m.log
+out();
+         ÔòÁ     
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalTasks' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:62:63:
+[37m      62 Ôöé ...     
+<h3 class="display-4 
+fw-black mb-0">{{ 
+org.[32mtotalTasks[37m 
+}}</h3>
+         ÔòÁ              
+                          
+            
+[32m~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalCompletedTasks' 
+does not exist on type 'Or
+ganizationOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:82:76:
+[37m      82 Ôöé ...y-4 
+fw-black mb-0 
+text-success">{{ org.[32m
+totalCompletedTasks[37m 
+}}</h3>
+         ÔòÁ              
+                          
+   [32m~~~~~~~~~~~~~~~~~~
+~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalCompletedTasks' 
+does not exist on type 'Or
+ganizationOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:88:50:
+[37m      88 Ôöé ...[styl
+e.width.%]="(org.[32mtota
+lCompletedTasks[37m / 
+org.totalTasks) * 1...
+         ÔòÁ              
+            [32m~~~~~~~~~
+~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalTasks' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:88:76:
+[37m      88 Ôöé ....%]="
+(org.totalCompletedTasks 
+/ 
+org.[32mtotalTasks[37m) 
+* 100 || 0"></div>
+         ÔòÁ              
+                          
+[32m~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalInProgressTasks' 
+does not exist on type 'Or
+ganizationOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:104:81:
+[37m      104 Ôöé 
+...black mb-0 
+text-warning-dark">{{ org.
+[32mtotalInProgressTasks
+[37m }}</h3>
+          ÔòÁ             
+                          
+  [32m~~~~~~~~~~~~~~~~~~~
+~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalInProgressTasks' 
+does not exist on type 'Or
+ganizationOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:109:50:
+[37m      109 Ôöé ...styl
+e.width.%]="(org.[32mtota
+lInProgressTasks[37m / 
+org.totalTasks) * ...
+          ÔòÁ             
+            [32m~~~~~~~~~
+~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalTasks' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:109:77:
+[37m      109 Ôöé ...]="(
+org.totalInProgressTasks 
+/ 
+org.[32mtotalTasks[37m) 
+* 100 || 0"></div>
+          ÔòÁ             
+                          
+[32m~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalToDoTasks' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:124:76:
+[37m      124 Ôöé 
+...splay-4 fw-black mb-0 
+text-primary">{{ org.[32m
+totalToDoTasks[37m 
+}}</h3>
+          ÔòÁ             
+                          
+        
+[32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalToDoTasks' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:129:50:
+[37m      129 Ôöé ...  [s
+tyle.width.%]="(org.[32mt
+otalToDoTasks[37m / 
+org.totalTasks) * 100...
+          ÔòÁ             
+               
+[32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'totalTasks' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:129:71:
+[37m      129 Ôöé ...idth
+.%]="(org.totalToDoTasks 
+/ 
+org.[32mtotalTasks[37m) 
+* 100 || 0"></div>
+          ÔòÁ             
+                          
+[32m~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'members' does not exist 
+on type 'OrganizationOverv
+iew'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:142:106:
+[37m      142 Ôöé 
+...border shadow-sm 
+rounded-pill px-3 
+py-2">{{ org.[32mmembers
+[37m.length }}
+          ÔòÁ             
+                          
+             
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'members' does not exist 
+on type 'OrganizationOverv
+iew'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:147:40:
+[37m      147 Ôöé        
+             @for (member 
+of org.[32mmembers[37m; 
+track member.id) {
+          ÔòÁ             
+                          
+  [32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'workspaces' does not 
+exist on type 'Organizatio
+nOverview'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ht
+ml:190:36:
+[37m      190 Ôöé        
+             @for (ws of 
+org.[32mworkspaces[37m; 
+track ws.id) {
+          ÔòÁ             
+                        
+[32m~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+OrganizationOverview.
+
+    src/app/common-ui/comm
+on-ui/organization-overvie
+w/organization-overview.ts
+:11:15:
+[37m      11 Ôöé   
+templateUrl: [32m'./organ
+ization-overview.html'[37
+m,
+         ÔòÁ              
+  [32m~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'organizationName' does 
+not exist on type 
+'{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:25:68:
+[37m      25 Ôöé 
+..."mb-0 fw-bold 
+text-truncate small">{{ us
+er.[32morganizationName[
+37m }}</p>
+         ÔòÁ              
+                          
+       
+[32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:47:20:
+[37m      47 Ôöé         
+    {{ user.[32mfirstName
+[37m.charAt(0) | 
+uppercase }}{{ 
+user.last...
+         ÔòÁ              
+       [32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:47:62:
+[37m      47 Ôöé 
+....charAt(0) | uppercase 
+}}{{ user.[32mlastName[3
+7m.charAt(0) | uppercase 
+}}
+         ÔòÁ              
+                       
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:53:24:
+[37m      53 Ôöé         
+        {{ 
+user.[32mfirstName[37m 
+}} {{ user.lastName }}
+         ÔòÁ              
+           
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:53:45:
+[37m      53 Ôöé         
+        {{ user.firstName 
+}} {{ 
+user.[32mlastName[37m }}
+         ÔòÁ              
+                          
+      [32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'userName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:57:24:
+[37m      57 Ôöé         
+        {{ 
+user.[32muserName[37m }}
+         ÔòÁ              
+           
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2488: Type '{}' 
+must have a 
+'[Symbol.iterator]()' 
+method that returns an 
+iterator.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.html
+:114:24:
+[37m      114 Ôöé        
+     @for (ws of 
+[32mworkspacesList[37m; 
+track ws.id) {
+          ÔòÁ             
+            
+[32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+4:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/workspaces-service' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:3
+:34:
+[37m      3 Ôöé ... 
+WorkspacesService } from 
+[32m'../../data/services/w
+orkspaces-service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/users-service' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:5
+:29:
+[37m      5 Ôöé import { 
+UsersService } from [32m'
+../../data/services/users-
+service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/projects-service' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:6
+:32:
+[37m      6 Ôöé ...rt { 
+ProjectsService } from [3
+2m'../../data/services/pro
+jects-service'[37m;
+        ÔòÁ               
+                 [32m~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/projects/get-project' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:9
+:27:
+[37m      9 Ôöé ...t { 
+GetProject } from [32m'..
+/../data/interfaces/projec
+ts/get-project'[37m;
+        ÔòÁ               
+           [32m~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:2
+3:57:
+[37m      23 Ôöé ...: () 
+=> firstValueFrom([32mthi
+s.workspacesService[37m.g
+etWorkspaces()) });
+         ÔòÁ              
+             [32m~~~~~~~~
+~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:3
+3:19:
+[37m      33 Ôöé     
+$userProfile = [32mthis.u
+serService[37m.getUserPro
+file();
+         ÔòÁ              
+      
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:7
+3:8:
+[37m      73 Ôöé         
+[32mthis.projectsService
+[37m.getWorkspaceProjects(
+workspaceId).sub...
+         ÔòÁ         [32m
+~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'projects' implicitly has 
+an 'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:7
+4:19:
+[37m      74 Ôöé         
+    next: 
+([32mprojects[37m) => {
+         ÔòÁ              
+      [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:8
+2:20:
+[37m      82 Ôöé         
+    error: 
+([32merr[37m) => 
+console.error(`Failed to 
+load projects...
+         ÔòÁ              
+       [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+04:8:
+[37m      104 Ôöé        
+ [32mthis.projectsService
+[37m.postWorkspaceProject
+(wsId, {
+          ÔòÁ         [32
+m~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+15:20:
+[37m      115 Ôöé        
+     error: 
+([32merr[37m) => 
+console.error('Failed to 
+create proje...
+          ÔòÁ             
+        [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+27:8:
+[37m      127 Ôöé        
+ [32mthis.workspacesServi
+ce[37m.postWorkspace({ 
+name: this.newWork...
+          ÔòÁ         [32
+m~~~~~~~~~~~~~~~~~~~~~~[0
+m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/sidebar/sidebar.ts:1
+33:20:
+[37m      133 Ôöé        
+     error: 
+([32merr[37m) => 
+console.error('Failed to 
+create works...
+          ÔòÁ             
+        [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:27:28:
+[37m      27 Ôöé         
+            {{ user.[32mf
+irstName[37m.charAt(0) | 
+uppercase }}{{ u...
+         ÔòÁ              
+               
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:27:70:
+[37m      27 Ôöé 
+....charAt(0) | uppercase 
+}}{{ user.[32mlastName[3
+7m.charAt(0) | uppercase 
+}}
+         ÔòÁ              
+                       
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:30:53:
+[37m      30 Ôöé 
+...class="fw-bold 
+mb-1">{{ 
+user.[32mfirstName[37m 
+}} {{ user.lastName 
+}}</h3>
+         ÔòÁ              
+                   
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:30:74:
+[37m      30 Ôöé 
+...class="fw-bold 
+mb-1">{{ user.firstName 
+}} {{ 
+user.[32mlastName[37m 
+}}</h3>
+         ÔòÁ              
+                          
+              
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'userName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:32:32:
+[37m      32 Ôöé         
+                {{ 
+user.[32muserName[37m }}
+         ÔòÁ              
+                   
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:36:36:
+[37m      36 Ôöé ...     
+               {{ 
+user.[32misAdmin[37m ? 
+'Workspace Admin' : 
+'Team...
+         ÔòÁ              
+                  
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'organizationName' does 
+not exist on type 
+'{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:59:63:
+[37m      59 Ôöé 
+...lass="text-dark 
+fw-bold mb-2 fs-4">{{ user
+.[32morganizationName[37
+m }}</p>
+         ÔòÁ              
+                          
+       
+[32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:61:25:
+[37m      61 Ôöé         
+        @if(user.[32misAd
+min[37m) {
+         ÔòÁ              
+            
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:77:72:
+[37m      77 Ôöé ...     
+<div class="icon-circle" [
+class.bg-sky-light]="user.
+[32misAdmin[37m">
+         ÔòÁ              
+                          
+                     
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:78:33:
+[37m      78 Ôöé         
+                @if(user.
+[32misAdmin[37m) {
+         ÔòÁ              
+                    
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:96:28:
+[37m      96 Ôöé         
+            {{ 
+user.[32misAdmin[37m ? 
+'Administrator Access' : 
+'St...
+         ÔòÁ              
+               
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:98:25:
+[37m      98 Ôöé         
+        @if(user.[32misAd
+min[37m) {
+         ÔòÁ              
+            
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 'id' 
+does not exist on type 
+'{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:128:32:
+[37m      128 Ôöé        
+                 {{ 
+user.[32mid[37m }}
+          ÔòÁ             
+                    
+[32m~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:147:48:
+[37m      147 Ôöé        
+                     [plac
+eholder]="user.[32mfirstN
+ame[37m">
+          ÔòÁ             
+                          
+          
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:152:48:
+[37m      152 Ôöé        
+                     [plac
+eholder]="user.[32mlastNa
+me[37m">
+          ÔòÁ             
+                          
+          
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'userName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.html:157:48:
+[37m      157 Ôöé        
+                     [plac
+eholder]="user.[32muserNa
+me[37m">
+          ÔòÁ             
+                          
+          
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/users-service' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:2:29:
+[37m      2 Ôöé import { 
+UsersService } from [32m'
+../../data/services/users-
+service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/Users/put-user-profile
+' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:5:31:
+[37m      5 Ôöé 
+...tUserProfile } from [3
+2m'../../data/interfaces/U
+sers/put-user-profile'[37
+m;
+        ÔòÁ               
+         [32m~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/user-profile/user-pr
+ofile.ts:80:20:
+[37m      80 Ôöé         
+    error: 
+([32merr[37m) => {
+         ÔòÁ              
+       [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/workspaces-service' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/workspace-members/wo
+rkspace-members.ts:3:34:
+[37m      3 Ôöé ... 
+WorkspacesService } from 
+[32m'../../data/services/w
+orkspaces-service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/Workspaces/get-member-
+role-dto' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/workspace-members/wo
+rkspace-members.ts:6:33:
+[37m      6 Ôöé ...eDto 
+} from [32m'../../data/in
+terfaces/Workspaces/get-me
+mber-role-dto'[37m;
+        ÔòÁ               
+ [32m~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/comm
+on-ui/workspace-members/wo
+rkspace-members.ts:22:19:
+[37m      22 Ôöé         
+    return [32mthis.works
+paceService[37m.getMember
+sRoles(id!);
+         ÔòÁ              
+      [32m~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/organizations-service' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:4:37:
+[37m      4 Ôöé 
+...izationsService } from 
+[32m'../../data/services/
+organizations-service'[37
+m;
+        ÔòÁ               
+            [32m~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:21:24:
+[37m      21 Ôöé ...    
+switchMap(() => [32mthis.
+organizationService[37m.g
+etOrganizationOve...
+         ÔòÁ              
+          [32m~~~~~~~~~~~
+~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:41:8:
+[37m      41 Ôöé         
+[32mthis.organizationServ
+ice[37m.putOrganization({
+ name: this.edit...
+         ÔòÁ         [32m
+~~~~~~~~~~~~~~~~~~~~~~~~[
+0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/orga
+nization-overview/organiza
+tion-overview.ts:47:20:
+[37m      47 Ôöé         
+    error: 
+([32merr[37m) => 
+console.error('Failed to 
+update organi...
+         ÔòÁ              
+       [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'organizationName' does 
+not exist on type 
+'{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:25:68:
+[37m      25 Ôöé 
+..."mb-0 fw-bold 
+text-truncate small">{{ us
+er.[32morganizationName[
+37m }}</p>
+         ÔòÁ              
+                          
+       
+[32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:47:20:
+[37m      47 Ôöé         
+    {{ user.[32mfirstName
+[37m.charAt(0) | 
+uppercase }}{{ 
+user.last...
+         ÔòÁ              
+       [32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:47:62:
+[37m      47 Ôöé 
+....charAt(0) | uppercase 
+}}{{ user.[32mlastName[3
+7m.charAt(0) | uppercase 
+}}
+         ÔòÁ              
+                       
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:53:24:
+[37m      53 Ôöé         
+        {{ 
+user.[32mfirstName[37m 
+}} {{ user.lastName }}
+         ÔòÁ              
+           
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:53:45:
+[37m      53 Ôöé         
+        {{ user.firstName 
+}} {{ 
+user.[32mlastName[37m }}
+         ÔòÁ              
+                          
+      [32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'userName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:57:24:
+[37m      57 Ôöé         
+        {{ 
+user.[32muserName[37m }}
+         ÔòÁ              
+           
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2488: Type '{}' 
+must have a 
+'[Symbol.iterator]()' 
+method that returns an 
+iterator.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.html:114:24:
+[37m      114 Ôöé        
+     @for (ws of 
+[32mworkspacesList[37m; 
+track ws.id) {
+          ÔòÁ             
+            
+[32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+Sidebar.
+
+    src/app/common-ui/side
+bar/sidebar.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./sideb
+ar.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/workspaces-service' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:3:34:
+[37m      3 Ôöé ... 
+WorkspacesService } from 
+[32m'../../data/services/w
+orkspaces-service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/users-service' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:5:29:
+[37m      5 Ôöé import { 
+UsersService } from [32m'
+../../data/services/users-
+service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/projects-service' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:6:32:
+[37m      6 Ôöé ...rt { 
+ProjectsService } from [3
+2m'../../data/services/pro
+jects-service'[37m;
+        ÔòÁ               
+                 [32m~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/projects/get-project' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:9:27:
+[37m      9 Ôöé ...t { 
+GetProject } from [32m'..
+/../data/interfaces/projec
+ts/get-project'[37m;
+        ÔòÁ               
+           [32m~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:23:57:
+[37m      23 Ôöé ...: () 
+=> firstValueFrom([32mthi
+s.workspacesService[37m.g
+etWorkspaces()) });
+         ÔòÁ              
+             [32m~~~~~~~~
+~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:33:19:
+[37m      33 Ôöé     
+$userProfile = [32mthis.u
+serService[37m.getUserPro
+file();
+         ÔòÁ              
+      
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:73:8:
+[37m      73 Ôöé         
+[32mthis.projectsService
+[37m.getWorkspaceProjects(
+workspaceId).sub...
+         ÔòÁ         [32m
+~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'projects' implicitly has 
+an 'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:74:19:
+[37m      74 Ôöé         
+    next: 
+([32mprojects[37m) => {
+         ÔòÁ              
+      [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:82:20:
+[37m      82 Ôöé         
+    error: 
+([32merr[37m) => 
+console.error(`Failed to 
+load projects...
+         ÔòÁ              
+       [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:104:8:
+[37m      104 Ôöé        
+ [32mthis.projectsService
+[37m.postWorkspaceProject
+(wsId, {
+          ÔòÁ         [32
+m~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:115:20:
+[37m      115 Ôöé        
+     error: 
+([32merr[37m) => 
+console.error('Failed to 
+create proje...
+          ÔòÁ             
+        [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:127:8:
+[37m      127 Ôöé        
+ [32mthis.workspacesServi
+ce[37m.postWorkspace({ 
+name: this.newWork...
+          ÔòÁ         [32
+m~~~~~~~~~~~~~~~~~~~~~~[0
+m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:133:20:
+[37m      133 Ôöé        
+     error: 
+([32merr[37m) => 
+console.error('Failed to 
+create works...
+          ÔòÁ             
+        [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:27:28:
+[37m      27 Ôöé         
+            {{ user.[32mf
+irstName[37m.charAt(0) | 
+uppercase }}{{ u...
+         ÔòÁ              
+               
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:27:70:
+[37m      27 Ôöé 
+....charAt(0) | uppercase 
+}}{{ user.[32mlastName[3
+7m.charAt(0) | uppercase 
+}}
+         ÔòÁ              
+                       
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:30:53:
+[37m      30 Ôöé 
+...class="fw-bold 
+mb-1">{{ 
+user.[32mfirstName[37m 
+}} {{ user.lastName 
+}}</h3>
+         ÔòÁ              
+                   
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:30:74:
+[37m      30 Ôöé 
+...class="fw-bold 
+mb-1">{{ user.firstName 
+}} {{ 
+user.[32mlastName[37m 
+}}</h3>
+         ÔòÁ              
+                          
+              
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'userName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:32:32:
+[37m      32 Ôöé         
+                {{ 
+user.[32muserName[37m }}
+         ÔòÁ              
+                   
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:36:36:
+[37m      36 Ôöé ...     
+               {{ 
+user.[32misAdmin[37m ? 
+'Workspace Admin' : 
+'Team...
+         ÔòÁ              
+                  
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'organizationName' does 
+not exist on type 
+'{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:59:63:
+[37m      59 Ôöé 
+...lass="text-dark 
+fw-bold mb-2 fs-4">{{ user
+.[32morganizationName[37
+m }}</p>
+         ÔòÁ              
+                          
+       
+[32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:61:25:
+[37m      61 Ôöé         
+        @if(user.[32misAd
+min[37m) {
+         ÔòÁ              
+            
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:77:72:
+[37m      77 Ôöé ...     
+<div class="icon-circle" [
+class.bg-sky-light]="user.
+[32misAdmin[37m">
+         ÔòÁ              
+                          
+                     
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:78:33:
+[37m      78 Ôöé         
+                @if(user.
+[32misAdmin[37m) {
+         ÔòÁ              
+                    
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:96:28:
+[37m      96 Ôöé         
+            {{ 
+user.[32misAdmin[37m ? 
+'Administrator Access' : 
+'St...
+         ÔòÁ              
+               
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'isAdmin' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:98:25:
+[37m      98 Ôöé         
+        @if(user.[32misAd
+min[37m) {
+         ÔòÁ              
+            
+[32m~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 'id' 
+does not exist on type 
+'{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:128:32:
+[37m      128 Ôöé        
+                 {{ 
+user.[32mid[37m }}
+          ÔòÁ             
+                    
+[32m~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'firstName' does not 
+exist on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:147:48:
+[37m      147 Ôöé        
+                     [plac
+eholder]="user.[32mfirstN
+ame[37m">
+          ÔòÁ             
+                          
+          
+[32m~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'lastName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:152:48:
+[37m      152 Ôöé        
+                     [plac
+eholder]="user.[32mlastNa
+me[37m">
+          ÔòÁ             
+                          
+          
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2339: Property 
+'userName' does not exist 
+on type '{}'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.html
+:157:48:
+[37m      157 Ôöé        
+                     [plac
+eholder]="user.[32muserNa
+me[37m">
+          ÔòÁ             
+                          
+          
+[32m~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+UserProfile.
+
+    src/app/common-ui/user
+-profile/user-profile.ts:1
+2:17:
+[37m      12 Ôöé     
+templateUrl: [32m'./user-
+profile.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/users-service' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.ts:2
+:29:
+[37m      2 Ôöé import { 
+UsersService } from [32m'
+../../data/services/users-
+service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/Users/put-user-profile
+' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.ts:5
+:31:
+[37m      5 Ôöé 
+...tUserProfile } from [3
+2m'../../data/interfaces/U
+sers/put-user-profile'[37
+m;
+        ÔòÁ               
+         [32m~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/user
+-profile/user-profile.ts:8
+0:20:
+[37m      80 Ôöé         
+    error: 
+([32merr[37m) => {
+         ÔòÁ              
+       [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/service
+s/workspaces-service' or 
+its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/work
+space-members/workspace-me
+mbers.ts:3:34:
+[37m      3 Ôöé ... 
+WorkspacesService } from 
+[32m'../../data/services/w
+orkspaces-service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../data/interfa
+ces/Workspaces/get-member-
+role-dto' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/work
+space-members/workspace-me
+mbers.ts:6:33:
+[37m      6 Ôöé ...eDto 
+} from [32m'../../data/in
+terfaces/Workspaces/get-me
+mber-role-dto'[37m;
+        ÔòÁ               
+ [32m~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/common-ui/work
+space-members/workspace-me
+mbers.ts:22:19:
+[37m      22 Ôöé         
+    return [32mthis.works
+paceService[37m.getMember
+sRoles(id!);
+         ÔòÁ              
+      [32m~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../../environme
+nts/environment.developmen
+t' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/data/serv
+ices/organizations-service
+.ts:3:28:
+[37m      3 Ôöé 
+...environment } from [32
+m'../../../environments/en
+vironment.development'[37
+m;
+        ÔòÁ               
+        [32m~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../../environme
+nts/environment' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/data/serv
+ices/projects-service.ts:3
+:28:
+[37m      3 Ôöé import { 
+environment } from [32m'.
+./../../environments/envir
+onment'[37m;
+        ÔòÁ               
+              [32m~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../../environme
+nts/environment.developmen
+t' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/data/serv
+ices/users-service.ts:3:28
+:
+[37m      3 Ôöé 
+...environment } from [32
+m'../../../environments/en
+vironment.development'[37
+m;
+        ÔòÁ               
+        [32m~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../../environme
+nts/environment.developmen
+t' or its corresponding 
+type declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/data/data/serv
+ices/workspaces-service.ts
+:3:28:
+[37m      3 Ôöé 
+...environment } from [32
+m'../../../environments/en
+vironment.development'[37
+m;
+        ÔòÁ               
+        [32m~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './ai-i
+nstructions.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/ai-instr
+uctions/ai-instructions.ts
+:8:17:
+[37m      8 Ôöé     
+templateUrl: [32m'./ai-in
+structions.html'[37m,
+        ÔòÁ               
+   [32m~~~~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./ai-prompt.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/ai-promp
+t/ai-prompt.ts:14:17:
+[37m      14 Ôöé     
+templateUrl: [32m'./ai-pr
+ompt.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './busi
+ness-dashboard.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/business
+-dashboard/business-dashbo
+ard.ts:9:17:
+[37m      9 Ôöé     
+templateUrl: [32m'./busin
+ess-dashboard.html'[37m,
+        ÔòÁ               
+   [32m~~~~~~~~~~~~~~~~~~
+~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './dail
+y-planner.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/daily-pl
+anner/daily-planner.ts:10:
+17:
+[37m      10 Ôöé     
+templateUrl: [32m'./daily
+-planner.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../common-ui/si
+debar/sidebar' or its 
+corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/dashboar
+d/dashboard/dashboard.ts:2
+:24:
+[37m      2 Ôöé import { 
+Sidebar } from [32m'../..
+/common-ui/sidebar/sidebar
+'[37m;
+        ÔòÁ               
+          [32m~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG1010: 'imports' 
+must be an array of 
+components, directives, 
+pipes, or NgModules.
+  Value could not be 
+determined 
+statically.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/dashboar
+d/dashboard/dashboard.ts:7
+:14:
+[37m      7 Ôöé     
+imports: 
+[[32mSidebar[37m, 
+RouterOutlet],
+        ÔòÁ               
+[32m~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/pages/dashboar
+d/dashboard/dashboard.ts:7
+:14:
+[37m      7 Ôöé     
+imports: 
+[[32mSidebar[37m, 
+RouterOutlet],
+        ÔòÁ               
+[32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../auth/auth' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:4:21:
+[37m      4 Ôöé import { 
+Auth } from [32m'../../au
+th/auth'[37m;
+        ÔòÁ               
+       
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:29:12:
+[37m      29 Ôöé         
+    [32mthis.authService
+[37m.login(this.form.value
+).subscribe({
+         ÔòÁ             
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'res' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:30:23:
+[37m      30 Ôöé         
+        next: 
+([32mres[37m) => {
+         ÔòÁ              
+          [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/login/lo
+gin/login.ts:33:24:
+[37m      33 Ôöé         
+        error: 
+([32merr[37m) => {
+         ÔòÁ              
+           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2307: Cannot find 
+module '../../auth/auth' 
+or its corresponding type 
+declarations.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/register
+/register/register.ts:4:21
+:
+[37m      4 Ôöé import { 
+Auth } from [32m'../../au
+th/auth'[37m;
+        ÔòÁ               
+       
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS2571: Object is of 
+type 'unknown'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/register
+/register/register.ts:50:1
+2:
+[37m      50 Ôöé         
+    [32mthis.authService
+[37m.register(payload).sub
+scribe({
+         ÔòÁ             
+[32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mTS7006: Parameter 
+'err' implicitly has an 
+'any' type.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/register
+/register/register.ts:54:2
+4:
+[37m      54 Ôöé         
+        error: 
+([32merr[37m) => {
+         ÔòÁ              
+           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./settings.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/settings
+/settings.ts:11:17:
+[37m      11 Ôöé     
+templateUrl: [32m'./setti
+ngs.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./tasks.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/tasks/ta
+sks.ts:11:17:
+[37m      11 Ôöé     
+templateUrl: 
+[32m'./tasks.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file 
+'./teams.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/teams/te
+ams.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: 
+[32m'./teams.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mNG2008: Could not 
+find template file './week
+ly-planner.html'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/pages/weekly-p
+lanner/weekly-planner.ts:1
+0:17:
+[37m      10 Ôöé     
+templateUrl: [32m'./weekl
+y-planner.html'[37m,
+         ÔòÁ              
+    [32m~~~~~~~~~~~~~~~~~
+~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mCould not resolve "../
+../data/services/workspace
+s-service"[0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:3:34:
+[37m      3 Ôöé ... 
+WorkspacesService } from 
+[32m'../../data/services/w
+orkspaces-service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mCould not resolve "../
+../data/services/users-ser
+vice"[0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:5:29:
+[37m      5 Ôöé import { 
+UsersService } from [32m'
+../../data/services/users-
+service'[37m;
+        ÔòÁ               
+               [32m~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~[0m
+
+
+[31mX [41;31m[[41;97mER
+ROR[41;31m][0m 
+[1mCould not resolve "../
+../data/services/projects-
+service"[0m
+
+    src/app/common-ui/side
+bar/sidebar.ts:6:32:
+[37m      6 Ôöé ...rt { 
+ProjectsService } from [3
+2m'../../data/services/pro
+jects-service'[37m;
+        ÔòÁ               
+                 [32m~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~[0m
+
+[39m[22m

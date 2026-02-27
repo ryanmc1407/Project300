@@ -1,0 +1,73 @@
+<div class="container-fluid py-4 px-4">
+    <div class="d-flex align-items-center gap-3 mb-4">
+        <div>
+            <h1 class="h3 fw-bold mb-0">Teams</h1>
+            <p class="text-muted small mb-0">Workspace members and roles</p>
+        </div>
+    </div>
+
+    @if (!currentWorkspaceId()) {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body py-5 text-center">
+            <p class="text-muted mb-0">Select a workspace from the sidebar to view its team members</p>
+        </div>
+    </div>
+    } @else if (isLoading()) {
+    <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="text-muted mt-2 small">Loading team members...</p>
+    </div>
+    } @else if (error()) {
+    <div class="alert alert-danger small">{{ error() }}</div>
+    } @else if (teamMembers().length === 0) {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body py-5 text-center">
+            <p class="text-muted mb-0">No team members found in this workspace</p>
+            <p class="text-muted small">Invite members through your organization settings</p>
+        </div>
+    </div>
+    } @else {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="border-0 py-3 px-4">Member</th>
+                            <th class="border-0 py-3">Role</th>
+                            <th class="border-0 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (member of teamMembers(); track member.userId) {
+                        <tr>
+                            <td class="py-3 px-4">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center text-primary fw-bold"
+                                        style="width:36px;height:36px;font-size:0.8rem">
+                                        {{ getInitials(member) }}
+                                    </div>
+                                    <div>
+                                        <p class="fw-medium mb-0 small">{{ member.firstName }} {{ member.lastName }}</p>
+                                        <p class="text-muted mb-0" style="font-size:0.75rem">{{ member.username }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3">
+                                <span class="badge" [class.bg-primary]="member.role === 'Manager'"
+                                    [class.bg-secondary]="member.role !== 'Manager'">{{ member.role
+                                    }}</span>
+                            </td>
+                            <td class="py-3">
+                                <button class="btn btn-sm btn-outline-danger"
+                                    (click)="removeMember(member.userId)">Remove</button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    }
+</div>

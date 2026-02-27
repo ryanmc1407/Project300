@@ -1,0 +1,99 @@
+﻿[1mInitial chunk files[22m[2m | [22m[1mNames[22m             [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-4O5AM547.js[39m  [2m | [22m[2m-[22m                 [2m | [22m[36m164.24 kB[39m[2m | [22m               [36m47.76 kB[39m
+[32mchunk-EEGXLJI6.js[39m  [2m | [22m[2m-[22m                 [2m | [22m [36m85.36 kB[39m[2m | [22m               [36m21.61 kB[39m
+[32mmain-HRH2MB6G.js[39m   [2m | [22m[2mmain[22m              [2m | [22m [36m38.14 kB[39m[2m | [22m               [36m12.46 kB[39m
+[32mchunk-HTDCQG5O.js[39m  [2m | [22m[2m-[22m                 [2m | [22m [36m18.46 kB[39m[2m | [22m                [36m5.28 kB[39m
+[32mstyles-IGS76ZL7.css[39m[2m | [22m[2mstyles[22m            [2m | [22m  [36m9.80 kB[39m[2m | [22m                [36m1.01 kB[39m
+[32mchunk-P5TKNPT7.js[39m  [2m | [22m[2m-[22m                 [2m | [22m  [36m4.00 kB[39m[2m | [22m                [36m1.38 kB[39m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m     [2m | [22m[1m320.00 kB[22m[2m | [22m               [1m89.50 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m             [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-IE73UJAY.js[39m  [2m | [22m[2m-[22m                 [2m | [22m [36m37.97 kB[39m[2m | [22m                [36m8.06 kB[39m
+[32mchunk-FEZWFKUI.js[39m  [2m | [22m[2mdashboard[22m         [2m | [22m [36m25.08 kB[39m[2m | [22m                [36m5.56 kB[39m
+[32mchunk-33CNZORX.js[39m  [2m | [22m[2mai-prompt[22m         [2m | [22m [36m11.43 kB[39m[2m | [22m                [36m3.49 kB[39m
+[32mchunk-TB2UHGKA.js[39m  [2m | [22m[2mregister[22m          [2m | [22m [36m10.48 kB[39m[2m | [22m                [36m3.04 kB[39m
+[32mchunk-AJBVKPKH.js[39m  [2m | [22m[2mlogin[22m             [2m | [22m  [36m7.20 kB[39m[2m | [22m                [36m2.40 kB[39m
+[32mchunk-I5HTIGX6.js[39m  [2m | [22m[2mai-instructions[22m   [2m | [22m  [36m6.75 kB[39m[2m | [22m                [36m2.16 kB[39m
+[32mchunk-GXXQSGBJ.js[39m  [2m | [22m[2mtasks[22m             [2m | [22m  [36m6.52 kB[39m[2m | [22m                [36m2.20 kB[39m
+[32mchunk-G4RAAUTZ.js[39m  [2m | [22m[2mdaily-planner[22m     [2m | [22m  [36m5.15 kB[39m[2m | [22m                [36m1.85 kB[39m
+[32mchunk-EBOYJNRD.js[39m  [2m | [22m[2mweekly-planner[22m    [2m | [22m  [36m4.21 kB[39m[2m | [22m                [36m1.61 kB[39m
+[32mchunk-BLDDXJ7C.js[39m  [2m | [22m[2mbusiness-dashboard[22m[2m | [22m  [36m3.93 kB[39m[2m | [22m                [36m1.43 kB[39m
+[32mchunk-PTUCOJ5O.js[39m  [2m | [22m[2mteams[22m             [2m | [22m  [36m3.81 kB[39m[2m | [22m                [36m1.49 kB[39m
+[32mchunk-KPXAKZG2.js[39m  [2m | [22m[2msettings[22m          [2m | [22m  [36m3.07 kB[39m[2m | [22m                [36m1.12 kB[39m
+[32mchunk-WX6ZVWV2.js[39m  [2m | [22m[2m-[22m                 [2m | [22m  [36m1.21 kB[39m[2m | [22m              [36m404 bytes[39m
+[32mchunk-W7ZAU4QZ.js[39m  [2m | [22m[2mprofile[22m           [2m | [22m[36m889 bytes[39m[2m | [22m              [36m889 bytes[39m
+[32mchunk-OVNB62GN.js[39m  [2m | [22m[2mmembers[22m           [2m | [22m[36m516 bytes[39m[2m | [22m              [36m516 bytes[39m
+[2m...and 2 more lazy chunks files. Use "--verbose" to show all the files.[22m
+
+Application bundle generation complete. [12.928 seconds] - 2026-02-25T04:51:05.964Z
+
+node.exe : 
+[1m[33m[33mÔû▓ [43;33m
+[[43;30mWARNING[43;33m]
+[0m [1mNG8102: The left 
+side of this nullish 
+coalescing operation does 
+not include 'null' or 
+'undefined' in its type, 
+therefore the '??' 
+operator can be safely 
+removed.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:
+\Users\ryanm\AppData\Roami
+ng\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (  
+  [1m[33m[33mÔ...r-co   
+ mpiler][0m:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+    src/app/pages/teams/te
+ams.html:58:88:
+[37m      58 Ôöé 
+...econdary]="member.role 
+!== 'Manager'">{{ 
+[32mmember.role ?? 
+'Employee'[37m
+         ÔòÁ              
+                          
+     [32m~~~~~~~~~~~~~~~~
+~~~~~~~~~[0m
+
+  Warning occurs in the 
+template of component 
+TeamsComponent.
+
+    src/app/pages/teams/te
+ams.ts:12:17:
+[37m      12 Ôöé     
+templateUrl: 
+[32m'./teams.html'[37m,
+         ÔòÁ              
+    
+[32m~~~~~~~~~~~~~~[0m
+
+
+[33mÔû▓ [43;33m[[43;30m
+WARNING[43;33m][0m [1ms
+rc/app/common-ui/sidebar/s
+idebar.css exceeded 
+maximum budget. Budget 
+4.00 kB was not met by 
+938 bytes with a total of 
+4.94 kB.[0m
+
+[39m[22m
+Output location: C:\Users\ryanm\tascly-frontend\dist\tascly-frontend
+
